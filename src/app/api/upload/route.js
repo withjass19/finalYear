@@ -1,17 +1,7 @@
 import mongoose from 'mongoose';
+import connectDB from "@/database/config/db";
 import {writeFile} from 'fs/promises'
 import { NextResponse } from "next/server";
-
-async function connectDB(){
-    const connect = await mongoose.connect('mongodb://localhost:27017/semple');
-
-    if(!connect){
-        console.log("Not Connect DB")
-    }
-    else{
-        console.log("Connect DB");
-    }
-}
 
 export async function POST(req, res){
     connectDB()
@@ -25,8 +15,8 @@ export async function POST(req, res){
     const buffer = Buffer.from(byteData);
     const filename =  file.name.replaceAll(" ", "_");
     console.log(filename);
-    // const path = `./public/images/${file.name}`;
-    // await writeFile(path,buffer)
+    const path = `./public/temp/${file.name}`;
+    await writeFile(path,buffer)
     
     return NextResponse.json({"message": "upload", success: true});
 }

@@ -1,17 +1,18 @@
 import {  Bookx } from "@/database/models/bookschema";
 import mongoose from "mongoose";
+import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
 
-async function connectDB(){
-    const connect = await mongoose.connect('mongodb://localhost:27017/semple');
+// async function connectDB(){
+//     const connect = await mongoose.connect('mongodb://localhost:27017/semple');
 
-    if(!connect){
-        console.log("Not Connect DB")
-    }
-    else{
-        console.log("Connect DB");
-    }
-}
+//     if(!connect){
+//         console.log("Not Connect DB")
+//     }
+//     else{
+//         console.log("Connect DB");
+//     }
+// }
 
 export async function POST(req){
   connectDB()

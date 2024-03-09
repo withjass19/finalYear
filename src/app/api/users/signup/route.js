@@ -1,15 +1,14 @@
 import connectDB from "@/database/config/db";
 import { User } from "@/database/models/userSchema";
 import { NextResponse } from "next/server";
-const bcrypt = require('bcryptjs');
+const CryptoJS = require('crypto-js');
 
 export async function  POST(req, res){
     connectDB()
 
     const {username, email, phoneNumber, password} = await req.json();
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = CryptoJS.AES.encrypt(password, 'key').toString();
 
     const data = new User({
         username, 

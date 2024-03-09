@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function PhotoCards({url, onClick}) {
+export default function PhotoCards({ url, onClick }){
   return (
     <div>
         <div className='border-[2px] border-red-500'>

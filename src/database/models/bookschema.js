@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
+    url: { type: String, required: true },
     bookName: { type: String, required: true },
-    status: { type: String, required: true },
+    description: { type: String, required: true },
     author: { type: String, required: true },
     addition: { type: String },
     subject: { type: String },
+    condition: { type: String },
     ISBN: { type: Number },
     type: { type: String },
-    publisher: { type: String },
-    description: { type: String, required: true },
+    binding: { type: String },
+    category: { type: String },
+    // UID - user-id
     UId: { type: String, required: true },
     price: { type: String, required: true },
+    selling_prince: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 });
 
-export const Bookx = mongoose.models.book || mongoose.model("book", bookSchema);
+export const Bookx = mongoose.models.bookx || mongoose.model("bookx", bookSchema);

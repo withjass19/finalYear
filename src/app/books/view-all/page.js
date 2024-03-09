@@ -9,7 +9,8 @@ import {Pagination} from "@nextui-org/react";
 import Link from 'next/link';
 import axios from 'axios';
 
-export default function ViewAll() {
+export default function ViewAll(props) {
+  console.log(props);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function ViewAll() {
           <div className="gap-8 grid grid-cols-2 sm:grid-cols-4">
             {books.map(book => (
               <Card shadow="sm" key={book._id} isPressable >
-              <Link href={`/books/book/${book._id}`}>
+              <Link href={`/jass/books/book/jx/${book._id}`}>
                 <CardBody className="overflow-visible p-0">
                   <Image
                     // shadow="sm"
@@ -48,7 +49,8 @@ export default function ViewAll() {
                     width="100%"
                     alt={book.bookName}
                     className="w-full h-[370px]"
-                    src='/assets/images/zero-to-one.jpeg'
+                    // src='/assets/images/zero-to-one.jpeg'
+                    src={book.url}
                   />
                 </CardBody>
                 <CardFooter className="text-small justify-between">

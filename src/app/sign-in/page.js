@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Input, Button} from "@nextui-org/react";
 import Link from "next/link";
 import axios from 'axios';
@@ -12,7 +12,7 @@ export default function SignIn() {
 
     const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+    const toggleVisibility = () => setIsVisible(!isVisible);
 
     const [formData, setFormData] = useState({
       email: '',
@@ -30,8 +30,13 @@ export default function SignIn() {
       try {
         const response = await axios.post('/api/users/signin', formData);
         console.log(response.data);
+        if(response.data.success){
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('user', response.data.id);
+          router.push('/profile')
+        }
         // Optionally, redirect the user to another page after successful sign-up
-        router.push('/profile')
+        // router.push('/profile')
         // if(success === true){
         //     router.push('/profile')
         // }
@@ -40,6 +45,12 @@ export default function SignIn() {
         // Handle error (e.g., display error message to the user)
       }
     }
+
+    useEffect(() => {
+      if(localStorage.getItem('token')){
+        router.push('/')
+      }
+    }, [])
 
   return (
     <div class="bg-[url('/assets/images/bg.png')] h-[100vh] w-full flex justify-center items-center">

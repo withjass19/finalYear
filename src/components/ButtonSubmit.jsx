@@ -7,7 +7,7 @@ export default function ButtonSubmit({ value, ...props}) {
 
   return (
     <div>
-      <button type="submit" disabled={pending} {...props}>
+      <button disabled={pending} {...props}>
         { pending ? 'loading...': value}
       </button>
     </div>

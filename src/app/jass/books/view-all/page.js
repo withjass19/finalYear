@@ -49,7 +49,8 @@ export default function ViewAll(props) {
                     width="100%"
                     alt={book.bookName}
                     className="w-full h-[370px]"
-                    src='/assets/images/zero-to-one.jpeg'
+                    // src='/assets/images/zero-to-one.jpeg'
+                    src={book.url}
                   />
                 </CardBody>
                 <CardFooter className="text-small justify-between">

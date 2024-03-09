@@ -1,70 +1,37 @@
 import connectDB from "@/database/config/db";
 import { User } from "@/database/models/userSchema";
 import { NextResponse } from "next/server";
-const fs = require('fs');
-const bcrypt = require('bcryptjs');
+const CryptoJS = require('crypto-js');
+const jwt = require('jsonwebtoken');
 
 export async function  POST(req, res){
     connectDB()
-
     const {email, password} = await req.json();
+    console.log(email, password);
+    let user = await  User.findOne({ email: email });
+    if(user){
 
-    // const user = await User.findOne({ email, password });
-    // console.log(email);
-    const salt = await bcrypt.genSalt(10);
-    var hashedPassword = await bcrypt.hash(password, salt);
+        let bytes  = CryptoJS.AES.decrypt(user.password, 'key');
+        let hashedPassword = bytes.toString(CryptoJS.enc.Utf8);
 
-    console.log(hashedPassword)
-
-    
-    try{
-        const user = await User.findOne({email})
-
-        if(user){
-            var storedHashedPassword = user.password
-            console.log(storedHashedPassword)
+        if (email == user.email && password == hashedPassword) {
+            let token = jwt.sign({ email: user.email, name: user.username}, 'jwtSecret', { expiresIn: 60 * 60 });
+            return NextResponse.json({success: true, token, id: user._id});
+        }else{
+            return NextResponse.json({
+                status: "error",
+                code: 500,
+                data: [],
+                message: "Internal Server Error",
+            });
         }
-        bcrypt.compare(password, storedHashedPassword,
-            async function (err, isMatch) {
-                if (isMatch) {
-                    console.log('Encrypted password is: ', password);
-                    console.log('Decrypted password is: ', storedHashedPassword);
-
-                    const dataToStore = { 
-                        key: user.id,
-                        name: user.username,
-                        email: user.email,
-                        phoneno: user.phoneNumber,
-                    };
-
-                    fs.writeFileSync('data.json', JSON.stringify(dataToStore));
-
-                    const storedData = JSON.parse(fs.readFileSync('data.json'));
-                    console.log('Stored data:', storedData);
-                }
- 
-                if (!isMatch) {
- 
-                    // If password doesn't match the following
-                    // message will be sent
-                    console.log(hashedPassword + ' is not encryption of '
-                        + password);
-                }
-            })
     }
-    catch{
-        console.log("error")
+    else{
+        return NextResponse.json({
+            status: "error",
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        });
     }
-    // if(await User.findOne({email})){
-    //     const storedHashedPassword = userspassword
-    //     console.log(storedHashedPassword);
-    //     return NextResponse.json({success: true})
-    // }
-    // else{
-    //     return NextResponse.json({success: false})
-    // }
-
-    return NextResponse.json({success: true})
-    
-    // return redirect("/books")
 } 

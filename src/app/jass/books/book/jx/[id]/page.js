@@ -4,6 +4,7 @@ import FooterData from '@/components/Footer'
 import Nav from '@/components/NavBar'
 import {Avatar} from "@nextui-org/react";
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function page({ params }) {
   // console.log(params);
@@ -36,7 +37,12 @@ export default function page({ params }) {
             <div className="max-w-screen-xl mx-auto bg-white rounded-lg">
               <div className="grid grid-cols-12">
                 <div className="col-span-5 p-5 py-16 flex justify-center items-center">
-                  <div className="bg-red-500 h-[500px] w-[350px] rounded-lg bg-[url('/assets/images/zero-to-one.jpeg')] bg-cover"></div>
+                  <div className={`bg-red-500 rounded-lg bg-cover`}>
+                    <Image className='h-[500px] w-[350px]' src={bookData.url} width={200} height={200} alt=""/>
+                  </div>
+                  {/* <div className="bg-red-500 h-[500px] w-[350px] rounded-lg bg-[url('/assets/images/zero-to-one.jpeg')] bg-cover"> */}
+        
+                  {/* </div> */}
                 </div>
                 <div className="col-span-7 py-16 pe-24">
                   <div className="border-[3px] p-10 text-left rounded-lg">

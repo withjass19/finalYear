@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react'
 import PhotoCards from './PhotoCards';
 import ButtonSubmit from './ButtonSubmit';
+import { uploadPhoto } from '@/actions/uploadAction';
 
 export default function UploadImage() {
     const formRef = useRef();
@@ -21,7 +22,7 @@ export default function UploadImage() {
         formRef.current.reset();
     }
 
-    async function handleDeleteFile(index){
+    async function handleDeleteFiles(index){
         const newFiles = files.filter((_, i) => i !== index)
         setFiles(newFiles);
     }
@@ -29,6 +30,14 @@ export default function UploadImage() {
     async function handleUpload(){
         if(!files.length) return alert('No image files are selected')
         if(!files.length > 3) return alert('Upload up to 3 image files')
+
+        const formData = new FormData();
+
+        files.forEach(file => {
+            formData.append("files", file)
+        })
+
+        const res = await uploadPhoto(formData);
     }
 
   return (
@@ -41,7 +50,7 @@ export default function UploadImage() {
         <div className='flex gap-10 flex-wrap mx-0 my-10'>
             {
                 files.map((file, index) => (
-                    <PhotoCards key={index} url={URL.createObjectURL(file)} onClick={handleDeleteFile}/>
+                    <PhotoCards key={index} url={URL.createObjectURL(file)} onClick={() => handleDeleteFiles(index)}/>
                 ))
             }
         </div>

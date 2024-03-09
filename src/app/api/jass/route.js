@@ -2,6 +2,7 @@ import { User } from "@/database/models/jassModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 
 async function connectDB(){
     const connect = await mongoose.connect('mongodb://localhost:27017/semple');
@@ -35,6 +36,8 @@ export async function POST(req, res){
     await data.save()
             // const data = await Users.find();
     console.log(data);
+    
+    var token = jwt.sign({ foo: data }, 'shhhhh');
 // }
-    return NextResponse.json({result: data});
+    return NextResponse.json({token});
 }

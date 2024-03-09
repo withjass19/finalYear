@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { MdArrowForwardIos } from "react-icons/md";
 import { useRef } from "react";
@@ -8,6 +8,17 @@ import { useInView } from "framer-motion";
 export default function Hero() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [isAuthenticate, setIsAuthenticate] = useState({value: null})
+
+  useEffect(() => {
+    try{
+      const token  = localStorage.getItem('token');
+      if(token){
+        setIsAuthenticate({value: token})
+      }
+    }
+    catch (error) {}
+  }, [])
 
   return (
     <div>
@@ -36,7 +47,8 @@ export default function Hero() {
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit dolore eum temporibus sunt tenetur reiciendis, porro impedit debitis facere minus?
                 </p>
                 <Link 
-                  href="/books"
+                  href= { isAuthenticate.value ?  "/books" : "/sign-in"}
+                  // href="/books"
                   style={{
                     transform: isInView ? "none" : "translateX(-200px)",
                     opacity: isInView ? 1 : 0,
