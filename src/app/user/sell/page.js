@@ -15,6 +15,7 @@ import {Input} from "@nextui-org/react";
 import { FiBookOpen } from "react-icons/fi";
 import {useDropzone} from 'react-dropzone';
 import axios from 'axios';
+import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 
 export default function Sell() {
     const {getRootProps, getInputProps, open, acceptedFiles} = useDropzone({
@@ -59,6 +60,10 @@ export default function Sell() {
         formData.set('category', category);
         formData.set('original_price', original_price);
         formData.set('selling_price', selling_price);
+         // Get the token from local storage
+        const token = localStorage.getItem('token');
+        console.log('Token:', localStorage.getItem('token'));
+        formData.set('token', token);
     
         try {
           const response = await axios.post('/api/books/posts', formData, {
@@ -77,33 +82,10 @@ export default function Sell() {
       <Nav/>
 
       <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12'>
-        <div className='bg-black col-span-3'>
-          <div className="flex flex-col gap-1.5 text-xl text-white px-10 py-5">
-              <Link href="/user/dashboard">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <AiOutlineAppstore />
-                    Deshboard
-                </div>
-              </Link>
-              <Link href="/user/profile">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <RiUser3Line />
-                    Profile
-                </div>
-              </Link>
-              <Link href="/user/sell">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <RiUser3Line />
-                    Upload book
-                </div>
-              </Link>
-            <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-              <TbMessageCircle2 />
-              Message
-            </div>
-          </div>
+        <div className='bg-black col-span-2'>
+          <Dashboard_Nav_Bar/>
         </div>
-        <div className='col-span-9 bg-slate-100 flex flex-col gap-4 p-8'>
+        <div className='col-span-10 bg-slate-100 flex flex-col gap-4 p-8'>
           <div className="bg-red-00 flex justify-center">
             <div className='w-[78%] h-[100%] px-20 py-10'>
                 <div className='bg-white rounded-lg drop-shadow-2xl overflow-hidden'>
@@ -115,7 +97,7 @@ export default function Sell() {
                 </div>
                 <form onSubmit={handleSubmit} method='GET' className='flex flex-col gap-5 px-20'>
                     <div>
-                    <div className="w-[500px] text-center border-[2px] border-slate-400 border-dashed rounded-lg">
+                    <div className=" text-center border-[2px] border-slate-400 border-dashed rounded-lg">
                         <div {...getRootProps({className: 'dropzone p-10'})}>
                         <input {...getInputProps()} name='profileImg'/>
                         <p className='text-slate-400'>Drag drop some files here</p>

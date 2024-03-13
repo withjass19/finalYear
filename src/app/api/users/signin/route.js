@@ -15,7 +15,7 @@ export async function  POST(req, res){
         let hashedPassword = bytes.toString(CryptoJS.enc.Utf8);
 
         if (email == user.email && password == hashedPassword) {
-            let token = jwt.sign({ email: user.email, name: user.username}, 'jwtSecret', { expiresIn: 60 * 60 });
+            let token = jwt.sign({ email: user.email, name: user.username, user: user._id}, 'jwtSecret', { expiresIn: '2d' });
             return NextResponse.json({success: true, token, id: user._id});
         }else{
             return NextResponse.json({

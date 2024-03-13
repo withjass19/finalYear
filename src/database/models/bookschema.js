@@ -12,7 +12,6 @@ const bookSchema = new mongoose.Schema({
     type: { type: String },
     binding: { type: String },
     category: { type: String },
-    // UID - user-id
     UId: { type: String, required: true },
     price: { type: String, required: true },
     selling_prince: { type: String, required: true },

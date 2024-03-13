@@ -7,6 +7,7 @@ import os from 'os'
 import { v4 as uuidv4 } from 'uuid';
 import cloudinary from 'cloudinary';
 import { Bookx } from "@/database/models/bookschema";
+const jwt = require('jsonwebtoken');
 
 // async function connectDB(){
 //     const connect = await mongoose.connect('mongodb://localhost:27017/semple');
@@ -43,6 +44,9 @@ export async function POST(req, res){
     const Category = data.get('category');
     const Original_price = data.get('original_price');
     const Selling_price = data.get('selling_price');
+    const token = data.get('token')
+
+    console.log('Token:', token);
 
     // console.log(file);
     
@@ -72,8 +76,12 @@ export async function POST(req, res){
 
     // Upload to the cloud after saving the photo file to the temp folder
     try {
+
         const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'js_upload' });
         console.log('Cloudinary URL:', cloudinaryResponse.url);
+
+        const decoded = jwt.verify(token, 'jwtSecret');
+        console.log(decoded.name, decoded.email, decoded.user)
 
         const data = new Bookx({
             url: cloudinaryResponse.url,
@@ -88,7 +96,7 @@ export async function POST(req, res){
             binding: Binding,
             category: Category,
             // UID - user-id
-            UId: "1234",
+            UId: decoded.user,
             price: Original_price,
             selling_prince: Selling_price,
         });

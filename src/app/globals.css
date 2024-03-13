@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
+
 @layer{
-    .backdrop{
+    /* .backdrop{
         backdrop-filter: blur(50px);
         -webkit-backdrop-filter: blur(50px);
+    } */
+    .shape{
+        /* clip-path: ellipse(31% 22% at 48% 1%); */
+        /* clip-path: ellipse(31% 22% at 51% 100%); */
+        clip-path: ellipse(36% 30% at 51% 100%);
     }
-} */
+} 

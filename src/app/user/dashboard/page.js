@@ -1,6 +1,7 @@
+'use client'
 import Nav from '@/components/NavBar'
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineAppstore } from "react-icons/ai";
 import { RiUser3Line } from "react-icons/ri";
 import { TbMessageCircle2 } from "react-icons/tb";
@@ -8,41 +9,43 @@ import { MdDeleteOutline } from "react-icons/md";
 import { RiEditLine } from "react-icons/ri";
 import {Tooltip, Button} from "@nextui-org/react";
 import { IoEyeOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoBookOutline } from "react-icons/io5";
 import Link from 'next/link';
+import axios from 'axios';
+import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 
 export default function Deshboard() {
+
+  const [postData, setpostData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const formData = new FormData();
+        // Get the token from local storage
+        const token = localStorage.getItem('token');
+        console.log('Token:', localStorage.getItem('token'));
+        formData.set('token', token);
+        const response = await axios.post('/api/dashbord/postData', formData);
+        console.log('Data sent successfully:', response.data);
+        setpostData(response.data.message)
+      } catch (error) {
+        console.error('Error sending data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div>
       <Nav/>
 
-      <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12'>
-        <div className='bg-black col-span-3'>
-          <div className="flex flex-col gap-1.5 text-xl text-white px-10 py-5">
-              <Link href="/user/dashboard">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <AiOutlineAppstore />
-                    Deshboard
-                </div>
-              </Link>
-              <Link href="/user/profile">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <RiUser3Line />
-                    Profile
-                </div>
-              </Link>
-              <Link href="/user/sell">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <RiUser3Line />
-                    Upload book
-                </div>
-              </Link>
-            <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-              <TbMessageCircle2 />
-              Message
-            </div>
-          </div>
+      <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12' >
+        <div className='bg-black col-span-2'>
+          <Dashboard_Nav_Bar/>
         </div>
-        <div className='col-span-9 bg-slate-100 flex flex-col gap-4 p-8'>
+        <div className='col-span-10 bg-slate-100 flex flex-col gap-4 p-8 px-20'>
           <div className='text-3xl font-semibold'>
             <p>Profile</p>
           </div>
@@ -65,6 +68,111 @@ export default function Deshboard() {
             <p className='text-3xl font-semibold '>Library</p>
             <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices lectus sem.</p>
           </div>
+
+          {/* <div className="bg-red-00">
+            <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
+                <table class="w-full text-md text-left rtl:text-right text-gray-500">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-200">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Product name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Color
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Category
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Price
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Apple MacBook Pro 17
+                            </th>
+                            <td class="px-6 py-4">
+                                Silver
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop
+                            </td>
+                            <td class="px-6 py-4">
+                                $2999
+                            </td>
+                            <td class="px-6 py-4 flex gap-3 text-xl">
+                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
+                                <IoEyeOutline className="text-gray-400" />
+                              </Tooltip>
+                              <Tooltip color="primary" content="Edit" className="capitalize">
+                                <RiEditLine className="text-sky-500" />
+                              </Tooltip>
+                              <Tooltip color="danger" content="Delete" className="capitalize">
+                                <MdDeleteOutline className="text-red-500" />
+                              </Tooltip>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Microsoft Surface Pro
+                            </th>
+                            <td class="px-6 py-4">
+                                White
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop PC
+                            </td>
+                            <td class="px-6 py-4">
+                                $1999
+                            </td>
+                            <td class="px-6 py-4 flex gap-3 text-xl">
+                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
+                                <IoEyeOutline className="text-gray-400" />
+                              </Tooltip>
+                              <Tooltip color="primary" content="Edit" className="capitalize">
+                                <RiEditLine className="text-sky-500" />
+                              </Tooltip>
+                              <Tooltip color="danger" content="Delete" className="capitalize">
+                                <MdDeleteOutline className="text-red-500" />
+                              </Tooltip>
+                            </td>
+                        </tr>
+                        <tr class="bg-white dark:bg-gray-800">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Magic Mouse 2
+                            </th>
+                            <td class="px-6 py-4">
+                                Black
+                            </td>
+                            <td class="px-6 py-4">
+                                Accessories
+                            </td>
+                            <td class="px-6 py-4">
+                                $99
+                            </td>
+                            <td class="px-6 py-4 flex gap-3 text-xl">
+                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
+                                <IoEyeOutline className="text-gray-400" />
+                              </Tooltip>
+                              <Tooltip color="primary" content="Edit" className="capitalize">
+                                <RiEditLine className="text-sky-500" />
+                              </Tooltip>
+                              <Tooltip color="danger" content="Delete" className="capitalize">
+                                <MdDeleteOutline className="text-red-500" />
+                              </Tooltip>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div> */}
+
+
 
           <div className="bg-red-00">
             <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
@@ -89,6 +197,33 @@ export default function Deshboard() {
                         </tr>
                     </thead>
                     <tbody>
+                      {postData.map(books => (
+                        <tr key={books._id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {books.bookName}
+                          </th>
+                          <td class="px-6 py-4">
+                                Silver
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop
+                            </td>
+                            <td class="px-6 py-4">
+                                $2999
+                            </td>
+                            <td class="px-6 py-4 flex gap-3 text-xl">
+                              {/* <Tooltip color="default" content="Post" className="capitalize bg-black text-white absolute"> */}
+                                <IoEyeOutline className="text-gray-400" />
+                              {/* </Tooltip> */}
+                              {/* <Tooltip color="primary" content="Edit" className="capitalize"> */}
+                                <RiEditLine className="text-sky-500" />
+                              {/* </Tooltip> */}
+                              {/* <Tooltip color="danger" content="Delete" className="capitalize"> */}
+                                <MdDeleteOutline className="text-red-500" />
+                              {/* </Tooltip> */}
+                            </td>
+                        </tr>
+                      ))}
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 Apple MacBook Pro 17

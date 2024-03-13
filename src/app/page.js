@@ -1,9 +1,9 @@
-// import About from "@/components/About";
+'use client'
+import React from 'react';
 import About1 from "@/components/About1";
 import Back from "@/components/Back";
 import BrowseGenres from "@/components/BrowseGenres";
 import Buttom from "@/components/Buttom";
-// import Community from "@/components/Community";
 import FooterData from "@/components/Footer";
 import Hero from "@/components/Hero";
 import HowWork from "@/components/HowWork";
@@ -17,7 +17,7 @@ export default function Home() {
           <Navbar/>
           <Hero/>
         </div>
-        <div className="animation-slide relative">
+        <div classNamroutre="animation-slide relative">
           <About1/>
         </div>
         <div className="animation-slide relative">

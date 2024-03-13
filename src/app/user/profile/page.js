@@ -9,33 +9,17 @@ import { RiEditLine } from "react-icons/ri";
 import {Tooltip, Button} from "@nextui-org/react";
 import { IoEyeOutline } from "react-icons/io5";
 import Link from 'next/link';
+import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 
 export default function Profile() {
   return (
     <div>
       <Nav/>
       <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12'>
-        <div className='bg-black col-span-3'>
-          <div className="flex flex-col gap-1.5 text-xl text-white px-10 py-5">
-              <Link href="/user/dashboard">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <AiOutlineAppstore />
-                    Deshboard
-                </div>
-              </Link>
-              <Link href="/user/profile">
-                <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-                    <RiUser3Line />
-                    Profile
-                </div>
-              </Link>
-            <div className='flex items-center gap-5 bg-red-00 py-3 px-5 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
-              <TbMessageCircle2 />
-              Message
-            </div>
-          </div>
+        <div className='bg-black col-span-2'>
+          <Dashboard_Nav_Bar/>
         </div>
-        <div className='col-span-9 bg-slate-100 flex flex-col gap-4 p-8'>
+        <div className='col-span-10 bg-slate-100 flex flex-col gap-4 p-8'>
           <div className='text-3xl font-semibold'>
             <p>Profile</p>
           </div>

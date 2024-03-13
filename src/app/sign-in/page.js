@@ -31,10 +31,11 @@ export default function SignIn() {
         const response = await axios.post('/api/users/signin', formData);
         console.log(response.data);
         if(response.data.success){
-          localStorage.setItem('token', response.data.token);
           localStorage.setItem('user', response.data.id);
+          localStorage.setItem('token', response.data.token);
           router.push('/profile')
         }
+        
         // Optionally, redirect the user to another page after successful sign-up
         // router.push('/profile')
         // if(success === true){
@@ -50,6 +51,13 @@ export default function SignIn() {
       if(localStorage.getItem('token')){
         router.push('/')
       }
+
+      // const timer = setTimeout(() => {
+      //   localStorage.removeItem('user');
+      //   router.reload(); // Refresh the router
+      // }, 5000); // 5000 milliseconds = 5 seconds
+    
+      // return () => clearTimeout(timer); // Clear the timer on component unmount
     }, [])
 
   return (

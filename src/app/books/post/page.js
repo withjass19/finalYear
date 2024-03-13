@@ -49,10 +49,15 @@ export default function Post() {
     formData.set('original_price', original_price);
     formData.set('selling_price', selling_price);
 
+    // Get the token from local storage
+    const token = localStorage.getItem('token');
+    console.log('Token:', localStorage.getItem('token'));
+    formData.set('token', token);
+
     try {
       const response = await axios.post('/api/books/posts', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
         }
       });
       console.log('Upload successful:', response.data);
