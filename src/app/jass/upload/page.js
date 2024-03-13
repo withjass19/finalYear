@@ -20,7 +20,7 @@ export default function Upload() {
   return (
     <div>
       <h1>NextJS Server Action Upload Image Files</h1>
-      <UploadImage/>
+      {/* <UploadImage/> */}
       {/* <div onClick={handleImageClick}>
         {images ? (
           <Image src="/assets/images/photo.png" alt='image' width={200} height={200}/>

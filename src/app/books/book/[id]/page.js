@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import FooterData from '@/components/Footer'
 import Nav from '@/components/NavBar'
 import {Avatar} from "@nextui-org/react";
+import Image from 'next/image';
 import axios from 'axios';
 
-export default function page({ params }) {
+export default function Book({ params }) {
   // console.log(params);
 
   const [bookData, setBookData] = useState(null);
