@@ -1,5 +1,5 @@
 'use client'
-import UploadImage from '@/components/UploadImage'
+// import UploadImage from '@/components/UploadImage'
 // import Image from 'next/image'
 import {React} from 'react'
 
