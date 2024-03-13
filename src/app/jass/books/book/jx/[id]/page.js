@@ -6,7 +6,7 @@ import {Avatar} from "@nextui-org/react";
 import axios from 'axios';
 import Image from 'next/image';
 
-export default function page({ params }) {
+export default function Jx({ params }) {
   // console.log(params);
 
   const [bookData, setBookData] = useState(null);

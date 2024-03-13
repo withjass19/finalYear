@@ -48,17 +48,18 @@ export default function SignIn() {
     }
 
     useEffect(() => {
-      if(localStorage.getItem('token')){
+      const token = localStorage.getItem('token');
+      if(token){
         router.push('/')
       }
-
       // const timer = setTimeout(() => {
       //   localStorage.removeItem('user');
       //   router.reload(); // Refresh the router
       // }, 5000); // 5000 milliseconds = 5 seconds
     
       // return () => clearTimeout(timer); // Clear the timer on component unmount
-    }, [])
+      }
+    );
 
   return (
     <div class="bg-[url('/assets/images/bg.png')] h-[100vh] w-full flex justify-center items-center">

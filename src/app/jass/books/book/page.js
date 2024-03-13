@@ -5,7 +5,7 @@ import Nav from '@/components/NavBar'
 import {Avatar} from "@nextui-org/react";
 import axios from 'axios';
 
-export default function page() {
+export default function Book() {
   const [books, setBooks] = useState([]);
 
   // Fetch data from backend when component mounts
