@@ -1,4 +1,4 @@
-import {  Bookx } from "@/database/models/bookschema";
+import {  Book } from "@/database/models/bookschema";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -31,7 +31,7 @@ export async function GET(){
     // });
 
     // await data.save()
-    const data = await Bookx.find();
+    const data = await Book.find();
     // return new NextResponse(JSON.stringify(data), {
 
 

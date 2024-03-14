@@ -1,4 +1,4 @@
-import {  Bookx } from "@/database/models/bookschema";
+import {  Book } from "@/database/models/bookschema"
 import mongoose from "mongoose";
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
@@ -19,10 +19,9 @@ export async function POST(req){
     const { id } = await req.json();
 
     // const id = '65d4961788d80b97480f90e7'
-    const data = await Bookx.findOne({_id: id});
+    const data = await Book.findOne({_id: id});
     
     console.log(data);
     
-
     return NextResponse.json({result: data});
 }

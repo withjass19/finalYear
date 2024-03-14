@@ -13,16 +13,30 @@ export default function ViewAll(props) {
   console.log(props);
   const [books, setBooks] = useState([]);
 
+  // useEffect(() => {
+  //   axios.get('/api/books')
+  //   .then(response => {
+  //     // Set fetched data to state
+  //     setBooks(response.data.result);
+  //   })
+  //   .catch(error => {
+  //     console.error('Error fetching data:', error);
+  //   });
+  // }, [])
+
   useEffect(() => {
-    axios.get('/api/books')
-    .then(response => {
-      // Set fetched data to state
+    // Fetch data when the component mounts
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/books');
       setBooks(response.data.result);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error fetching data:', error);
-    });
-  }, [])
+    }
+  };
 
   return (
     <div className='bg-[#F1F2F4]'>

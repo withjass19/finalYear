@@ -6,7 +6,7 @@ import fs from "fs/promises";
 import os from 'os'
 import { v4 as uuidv4 } from 'uuid';
 import cloudinary from 'cloudinary';
-import { Bookx } from "@/database/models/bookschema";
+import { Book } from "@/database/models/bookschema";
 const jwt = require('jsonwebtoken');
 
 // async function connectDB(){
@@ -83,7 +83,7 @@ export async function POST(req, res){
         const decoded = jwt.verify(token, 'jwtSecret');
         console.log(decoded.name, decoded.email, decoded.user)
 
-        const data = new Bookx({
+        const data = new Book({
             url: cloudinaryResponse.url,
             bookName: BookName,
             description: Discription,

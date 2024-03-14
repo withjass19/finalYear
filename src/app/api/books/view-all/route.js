@@ -1,4 +1,4 @@
-import {  Bookx } from "@/database/models/bookschema";
+import {  Book } from "@/database/models/bookschema";
 import mongoose from "mongoose";
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
@@ -33,9 +33,9 @@ export async function GET(){
 
     // await data.save()
     // const data = await Bookx.find();
-    const totalDocuments = await Bookx.countDocuments();
+    const totalDocuments = await Book.countDocuments();
     
-    const allDocuments = await Bookx.find({}, '_id');
+    const allDocuments = await Book.find({}, '_id');
 
     const documentIds = allDocuments.map(doc => doc._id);
 

@@ -44,6 +44,7 @@ export default function Book({ params }) {
                   <div className="border-[3px] p-10 text-left rounded-lg">
                     <div className="flex flex-col gap-2">
                       <p className="text-4xl font-black">{bookData.bookName}</p>
+                      <p className="text-xl font-bold">{bookData.selling_prince}</p>
                       <p className="text-xl font-bold">{bookData.price}</p>
                       <p className="text-sm font-medium border-green-400 bg-green-100 text-green-600 border-[2px] rounded-lg py-1.5 px-3 w-[330px] text-center mt-4">{bookData.status}</p>
                     </div>
@@ -52,7 +53,7 @@ export default function Book({ params }) {
                       <p>Condition: {bookData.addition}</p>
                       <p>ISBN: {bookData.ISBN}</p>
                       <p>Type: {bookData.type}</p>
-                      <p>Category: {bookData.publisher}</p>
+                      <p>Category: {bookData.category}</p>
                       <p>Author: {bookData.author}</p>
                       <p>Addition: {bookData.addition}</p>
                     </div>
@@ -105,6 +106,36 @@ export default function Book({ params }) {
             </div>
             <div className='col-span-7 py-16 ps-12 pe-32'>
               <p className='text-2xl mb-5'>Discription</p>
+              {bookData && (
+          <div className="bg-[#F1F2F4] p-5">
+            <div className="max-w-screen-xl mx-auto bg-white rounded-lg">
+              <div className="grid grid-cols-12">
+                <div className="col-span-5 p-5 py-16 flex justify-center items-center">
+                <Image className='h-[500px] w-[350px]' src={bookData.url} width={200} height={200} alt=""/>
+                  {/* <div className="bg-red-500 h-[500px] w-[350px] rounded-lg bg-[url('/assets/images/zero-to-one.jpeg')] bg-cover"></div> */}
+                </div>
+                <div className="col-span-7 py-16 pe-24">
+                  <div className="border-[3px] p-10 text-left rounded-lg">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-4xl font-black">{bookData.bookName}</p>
+                      <p className="text-xl font-bold">{bookData.price}</p>
+                      <p className="text-sm font-medium border-green-400 bg-green-100 text-green-600 border-[2px] rounded-lg py-1.5 px-3 w-[330px] text-center mt-4">{bookData.status}</p>
+                    </div>
+                    <div className="flex flex-col gap-3 pt-10">
+                      <p>Subject: {bookData.subject}</p>
+                      <p>Condition: {bookData.addition}</p>
+                      <p>ISBN: {bookData.ISBN}</p>
+                      <p>Type: {bookData.type}</p>
+                      <p>Category: {bookData.category}</p>
+                      <p>Author: {bookData.author}</p>
+                      <p>Addition: {bookData.addition}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, recusandae atque! Asperiores sit at, totam distinctio quisquam facere obcaecati ipsa sed corrupti, dicta voluptas delectus! Dignissimos ullam fugit enim laborum?</p>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, id exercitationem numquam hic sit sed animi aut perferendis eaque alias quasi sunt. Distinctio nemo quam nulla atque? Eos, quos recusandae?</p>
             </div>
