@@ -4,7 +4,7 @@
 import mongoose from 'mongoose';
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
-import { Bookx } from "@/database/models/bookschema";
+import { Book } from "@/database/models/bookschema";
 const jwt = require('jsonwebtoken');
 
 export async function POST(req, res){
@@ -17,7 +17,7 @@ export async function POST(req, res){
     console.log('Token:', token);
     const decoded = jwt.verify(token, 'jwtSecret');
     console.log(decoded.name, decoded.email, decoded.user)
-    const user = await Bookx.find( {UId: decoded.user} ) ;
+    const user = await Book.find( {UId: decoded.user} ) ;
     if(user.length == 0){
         console.log("not find");
     }else{
