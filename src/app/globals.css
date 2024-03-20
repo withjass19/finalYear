@@ -13,4 +13,10 @@
         /* clip-path: ellipse(31% 22% at 51% 100%); */
         clip-path: ellipse(36% 30% at 51% 100%);
     }
+
+    .text-border{
+        font-family: sans-serif;
+        -webkit-text-stroke-width: 1.2px;
+        -webkit-text-stroke-color: white;
+      }
 } 

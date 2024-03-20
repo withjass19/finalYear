@@ -1,17 +1,28 @@
+'use client'
 import Nav from '@/components/NavBar'
 import Image from 'next/image';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineAppstore } from "react-icons/ai";
 import { RiUser3Line } from "react-icons/ri";
 import { TbMessageCircle2 } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 import { RiEditLine } from "react-icons/ri";
-import {Tooltip, Button} from "@nextui-org/react";
-import { IoEyeOutline } from "react-icons/io5";
+import {Input, Button} from "@nextui-org/react";
 import Link from 'next/link';
 import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
+import { EyeSlashFilledIcon } from '@/components/icons/EyeSlashFilledIcon';
+import { EyeFilledIcon } from '@/components/icons/EyeFilledIcon';
 
 export default function Profile() {
+  const [value, setValue] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
+
+  // Value ko update karne ke liye ek function banae
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
   return (
     <div>
       <Nav/>
@@ -37,6 +48,88 @@ export default function Profile() {
               </div>
             </div>
           </div>
+
+          <div className='text-3xl font-semibold py-5'>
+            <p>Gernal information</p>
+          </div>
+
+          <div className='bg-white rounded-lg drop-shadow-lg'>
+            <form className="flex flex-col px-9 mx-5 pb-9">
+              <Input
+                key="outside-left"
+                type="text"
+                label="Username"
+                labelPlacement="outside-left"
+                placeholder="Enter your username"
+                value={value}
+                onChange={handleChange}
+              />
+              <Input
+                key="outside-left"
+                type="email"
+                label="Email"
+                labelPlacement="outside-left"
+                placeholder="Enter your email"
+              />
+              <Input
+                key="outside-left"
+                type="text"
+                label="Phone"
+                labelPlacement="outside-left"
+                placeholder="Enter your username"
+              />                           
+              {/* <Input className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9" type="submit" value="Sign Up"></Input> */}
+              <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
+            </form>
+          </div>
+
+          <div className='text-3xl font-semibold py-5'>
+            <p>Change Password</p>
+          </div>
+
+          <div className='bg-white rounded-lg drop-shadow-lg'>
+            <form className="flex flex-col px-9 mx-5 pb-9">
+            <Input 
+                  className="mb-3" 
+                  variant="underlined" 
+                  label="Current Password" 
+                  placeholder="Enter current password" 
+                  endContent={
+                    <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                      {isVisible ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      )}
+                    </button>
+                  }
+                  type={isVisible ? "text" : "password"}
+                  name="password"
+                  required
+                />
+              <Input 
+                  className="mb-3" 
+                  variant="underlined" 
+                  label="New Password" 
+                  placeholder="Enter new password" 
+                  endContent={
+                    <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                      {isVisible ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      )}
+                    </button>
+                  }
+                  type={isVisible ? "text" : "password"}
+                  name="password"
+                  required
+                />                       
+              {/* <Input className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9" type="submit" value="Sign Up"></Input> */}
+              <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
