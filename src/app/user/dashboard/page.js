@@ -18,6 +18,7 @@ import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 export default function Deshboard() {
 
   const [postData, setpostData] = useState([]);
+  const [data, setData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +30,7 @@ export default function Deshboard() {
         formData.set('token', token);
         const response = await axios.post('/api/dashbord/postData', formData);
         console.log('Data sent successfully:', response.data);
+        setData(true)
         setpostData(response.data.message)
       } catch (error) {
         console.error('Error sending data:', error);
@@ -196,8 +198,15 @@ export default function Deshboard() {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                      {postData.map(books => (
+                    {!data ? (
+                      <tbody>
+                        <tr>
+                          <td className='text-center px-6 py-12' colSpan="5">No Data...</td>
+                        </tr>
+                      </tbody>
+                    ) : (
+                      <tbody>
+                        {postData.map(books => (
                         <tr key={books._id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                           <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {books.bookName}
@@ -224,7 +233,33 @@ export default function Deshboard() {
                             </td>
                         </tr>
                       ))}
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      </tbody>
+                    )}
+
+
+                    {/* <tbody> */}
+                      {/* {postData.map(books => (
+                        <tr key={books._id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {books.bookName}
+                          </th>
+                          <td class="px-6 py-4">
+                                Silver
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop
+                            </td>
+                            <td class="px-6 py-4">
+                                $2999
+                            </td>
+                            <td class="px-6 py-4 flex gap-3 text-xl">
+                                <IoEyeOutline className="text-gray-400" />
+                                <RiEditLine className="text-sky-500" />
+                                <MdDeleteOutline className="text-red-500" />
+                            </td>
+                        </tr>
+                      ))} */}
+                        {/* <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 Apple MacBook Pro 17
                             </th>
@@ -298,8 +333,8 @@ export default function Deshboard() {
                                 <MdDeleteOutline className="text-red-500" />
                               </Tooltip>
                             </td>
-                        </tr>
-                    </tbody>
+                        </tr> */}
+                    {/* </tbody> */}
                 </table>
             </div>
           </div>
