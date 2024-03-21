@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 import { EyeSlashFilledIcon } from '@/components/icons/EyeSlashFilledIcon';
 import { EyeFilledIcon } from '@/components/icons/EyeFilledIcon';
+import axios from 'axios';
 
 export default function Profile() {
   const [value, setValue] = useState('');
@@ -23,6 +24,35 @@ export default function Profile() {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
+  const [newPswd, setNewPswd] = useState('');
+  const [currentPswd, setCurrentPswd] = useState('')
+
+  const handleSubmitChangePassword = async (e) =>{
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.set('current_password', currentPswd);
+    formData.set('new_password', newPswd);
+
+    const token = localStorage.getItem('token');
+    console.log('Token:', localStorage.getItem('token'));
+    formData.set('token', token);
+    try {
+      const response = await axios.post('/api/dashbord/profile/changePassword', formData);
+      console.log(response.data);
+      
+      // Optionally, redirect the user to another page after successful sign-up
+      // router.push('/profile')
+      // if(success === true){
+      //     router.push('/profile')
+      // }
+    } catch (error) {
+      console.error('Sign-up error:', error);
+      // Handle error (e.g., display error message to the user)
+    }
+  }
+
   return (
     <div>
       <Nav/>
@@ -44,16 +74,109 @@ export default function Profile() {
               <div className='text-center mt-3 absolute top-80'>
                 <p className='text-2xl font-semibold'>Name</p>
                 <p className='text-gray-400 font-medium'>@UserName</p>
-                <button className='bg-black text-white font-medium py-1.5 px-10 rounded-lg border-black border-[2px] hover:text-black hover:bg-white mt-5'>Edit</button>
+                <button className='bg-black text-white font-medium py-1.5 px-10 rounded-lg border-black border-[2px] hover:text-black hover:bg-white mt-5'>Upload image</button>
               </div>
             </div>
           </div>
 
-          <div className='text-3xl font-semibold py-5'>
-            <p>Gernal information</p>
+          <div className='grid grid-cols-12 grid-rows-1 pt-5 gap-10'>
+            <div className='col-span-6 bg-white rounded-lg drop-shadow-lg flex flex-col justify-center'>
+              <div className='text-3xl font-semibold pb-5 pt-10 px-12'>
+                <p>General information</p>
+              </div>
+              <form className="flex flex-col px-12 pb-9 gap-5">
+              <Input 
+                  className="mb-3" 
+                  type="text" 
+                  variant="underlined" 
+                  label="Username" 
+                  placeholder="Enter your username" 
+                  name="username"
+                  // color="danger"
+                  value={value}
+                  onChange={handleChange}
+                  required
+                />
+                <Input 
+                  className="mb-3" 
+                  type="email"
+                  variant="underlined" 
+                  label="Email Address" 
+                  placeholder="Enter your email" 
+                  name="email"
+                  value={value}
+                  onChange={handleChange}
+                  required
+                />
+                <Input 
+                  className="mb-3" 
+                  type="text" 
+                  variant="underlined" 
+                  label="Phone Number" 
+                  placeholder="Enter your phone number" 
+                  name="phoneNumber"
+                  value={value}
+                  onChange={handleChange}
+                  required
+                />                         
+                <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
+              </form>
+            </div>
+            <div className='col-span-6 bg-white rounded-lg drop-shadow-lg flex flex-col gap-10'>
+              <div className='text-3xl font-semibold px-12 pt-12'>
+                <p>Change Password</p>
+              </div>
+              <form onSubmit={handleSubmitChangePassword} className="flex flex-col px-9 mx-5 pb-9 gap-10">
+                <Input 
+                  className="mb-3" 
+                  variant="underlined" 
+                  label="Current Password" 
+                  placeholder="Enter current password" 
+                  endContent={
+                    <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                      {isVisible ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      )}
+                    </button>
+                  }
+                  type={isVisible ? "text" : "password"}
+                  name="current_password"
+                  value={currentPswd}
+                  onChange={(e) => setCurrentPswd(e.target.value)}
+                  required
+                />
+                <Input 
+                  className="mb-3" 
+                  variant="underlined" 
+                  label="New Password" 
+                  placeholder="Enter new password" 
+                  endContent={
+                    <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                      {isVisible ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      )}
+                    </button>
+                  }
+                  type={isVisible ? "text" : "password"}
+                  name="new_password"
+                  value={newPswd}
+                  onChange={(e) => setNewPswd(e.target.value)}
+                  required
+                />                       
+              <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
+            </form>
+            </div>
           </div>
 
-          <div className='bg-white rounded-lg drop-shadow-lg'>
+          {/* <div className='text-3xl font-semibold py-5'>
+            <p>Gernal information</p>
+          </div> */}
+
+          {/* <div className='bg-white rounded-lg drop-shadow-lg'>
             <form className="flex flex-col px-9 mx-5 pb-9">
               <Input
                 key="outside-left"
@@ -78,16 +201,15 @@ export default function Profile() {
                 labelPlacement="outside-left"
                 placeholder="Enter your username"
               />                           
-              {/* <Input className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9" type="submit" value="Sign Up"></Input> */}
               <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
             </form>
-          </div>
+          </div> */}
 
-          <div className='text-3xl font-semibold py-5'>
+          {/* <div className='text-3xl font-semibold py-5'>
             <p>Change Password</p>
-          </div>
+          </div> */}
 
-          <div className='bg-white rounded-lg drop-shadow-lg'>
+          {/* <div className='bg-white rounded-lg drop-shadow-lg'>
             <form className="flex flex-col px-9 mx-5 pb-9">
             <Input 
                   className="mb-3" 
@@ -125,10 +247,9 @@ export default function Profile() {
                   name="password"
                   required
                 />                       
-              {/* <Input className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9" type="submit" value="Sign Up"></Input> */}
               <Button className="bg-transparent border-[2px] border-black text-black font-medium hover:bg-black hover:text-white mb-9 mt-7" type="submit">Update</Button>
             </form>
-          </div>
+          </div> */}
 
         </div>
       </div>
