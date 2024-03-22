@@ -8,11 +8,15 @@ import { IoNotifications } from "react-icons/io5";
 import Link from "next/link";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import Image from 'next/image';
 
 export default function Nav() {
   const router = useRouter();
   const [user, setUser] = useState({value: null})
   const [key, setKey] = useState(0)
+
+  const [imageURL, setImageURL] = useState('');
 
   useEffect(() => {
     try{
@@ -23,6 +27,25 @@ export default function Nav() {
       }
     }
     catch (error) {}
+
+
+    const fetchUserImageFromBackend = async () => {
+      try{
+        const formData = new FormData();
+  
+        const token = localStorage.getItem('token');
+        console.log('Token:', localStorage.getItem('token'));
+        formData.set('token', token);
+        // Example fetch function, replace with your actual fetch logic
+        const response = await axios.post('/api/dashbord/profile/profileImage', formData);
+        console.log('Profile Data successfully:', response.data);
+        setImageURL(response.data.url);
+      }catch{
+        console.log("error")
+        // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
+      }      
+    };
+    fetchUserImageFromBackend();
   }, [])
 
   const logout = () => {
@@ -91,7 +114,7 @@ export default function Nav() {
               <div className="flex items-center gap-4">
       <Dropdown placement="bottom-start">
         <DropdownTrigger>
-          <User
+          {/* <User
             as="button"
             avatarProps={{
               isBordered: true,
@@ -100,7 +123,10 @@ export default function Nav() {
             className="transition-transform"
             // description="@tonyreichert"
             // name="Tony Reichert"
-          />
+          /> */}
+          <div className="transition-transform rounded-full ring ring-black ring-offset-2 ring-offset-slate-50">
+            <Image className='rounded-full' src={imageURL} width={50} height={50} alt='user'/>
+          </div>
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">

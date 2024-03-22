@@ -75,9 +75,7 @@ export default function Profile() {
       }catch{
         console.log("error")
         // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
-      }
-
-      
+      }      
     };
     fetchUserImageFromBackend();
     // Fetch initial value from the backend

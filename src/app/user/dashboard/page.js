@@ -19,8 +19,28 @@ export default function Deshboard() {
 
   const [postData, setpostData] = useState([]);
   const [data, setData] = useState(false);
+  const [imageURL, setImageURL] = useState('');
 
   useEffect(() => {
+    const fetchUserImageFromBackend = async () => {
+      try{
+        const formData = new FormData();
+  
+        const token = localStorage.getItem('token');
+        console.log('Token:', localStorage.getItem('token'));
+        formData.set('token', token);
+        // Example fetch function, replace with your actual fetch logic
+        const response = await axios.post('/api/dashbord/profile/profileImage', formData);
+        console.log('Profile Data successfully:', response.data);
+        setImageURL(response.data.url);
+      }catch{
+        console.log("error")
+        // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
+      }      
+    };
+    fetchUserImageFromBackend();
+
+
     const fetchData = async () => {
       try {
         const formData = new FormData();
@@ -36,8 +56,8 @@ export default function Deshboard() {
         console.error('Error sending data:', error);
       }
     };
-
     fetchData();
+    
   }, []);
   return (
     <div>
@@ -56,7 +76,7 @@ export default function Deshboard() {
             <div className='h-[230px] relative bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-t-lg'></div>
             <div className='flex flex-col items-center pb-20'>
               <div className='bg-slate-50/50 w-[175px] h-[175px] flex justify-center items-center rounded-full backdrop-blur-sm relative -top-24'>
-                <Image className='rounded-full' src="/assets/images/user.jpg" width={150} height={150} alt='user'/>
+                <Image className='rounded-full' src={imageURL} width={150} height={150} alt='user'/>
               </div>
               <div className='text-center mt-3 absolute top-80'>
                 <p className='text-2xl font-semibold'>Name</p>
