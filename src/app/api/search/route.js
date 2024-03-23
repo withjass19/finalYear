@@ -3,8 +3,21 @@ import {  Book } from "@/database/models/bookschema";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-export async function GET(){
+export async function POST(req){
   connectDB()
+
+    // const js = await req.json()
+
+    const data = await req.formData();
+    const seachBook = data.get('query');
+
+    console.log(seachBook)
+
+    const searchResults = await Book.find({ bookName: seachBook})
+
+    // const searchResults = await Book.find({ bookName: { $regex: seachBook, $options: 'i' } });
+
+    console.log(searchResults)
 
 
     // const data = new Bookx({
@@ -22,10 +35,7 @@ export async function GET(){
     // });
 
     // await data.save()
-    const data = await Book.find();
+    
     // return new NextResponse(JSON.stringify(data), {
-
-
-    console.log(data);
-    return NextResponse.json({result: data});
+    return NextResponse.json({result: searchResults, success: true});
 }

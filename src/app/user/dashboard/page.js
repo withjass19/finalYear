@@ -11,15 +11,18 @@ import {Tooltip, Button} from "@nextui-org/react";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoBookOutline } from "react-icons/io5";
+import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
 import Link from 'next/link';
 import axios from 'axios';
-import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
 
 export default function Deshboard() {
 
   const [postData, setpostData] = useState([]);
   const [data, setData] = useState(false);
   const [imageURL, setImageURL] = useState('');
+
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   useEffect(() => {
     const fetchUserImageFromBackend = async () => {
@@ -91,111 +94,6 @@ export default function Deshboard() {
             <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices lectus sem.</p>
           </div>
 
-          {/* <div className="bg-red-00">
-            <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
-                <table class="w-full text-md text-left rtl:text-right text-gray-500">
-                    <thead class="text-sm text-gray-700 uppercase bg-gray-200">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Product name
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Color
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Category
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4 flex gap-3 text-xl">
-                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
-                                <IoEyeOutline className="text-gray-400" />
-                              </Tooltip>
-                              <Tooltip color="primary" content="Edit" className="capitalize">
-                                <RiEditLine className="text-sky-500" />
-                              </Tooltip>
-                              <Tooltip color="danger" content="Delete" className="capitalize">
-                                <MdDeleteOutline className="text-red-500" />
-                              </Tooltip>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop PC
-                            </td>
-                            <td class="px-6 py-4">
-                                $1999
-                            </td>
-                            <td class="px-6 py-4 flex gap-3 text-xl">
-                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
-                                <IoEyeOutline className="text-gray-400" />
-                              </Tooltip>
-                              <Tooltip color="primary" content="Edit" className="capitalize">
-                                <RiEditLine className="text-sky-500" />
-                              </Tooltip>
-                              <Tooltip color="danger" content="Delete" className="capitalize">
-                                <MdDeleteOutline className="text-red-500" />
-                              </Tooltip>
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
-                            </td>
-                            <td class="px-6 py-4 flex gap-3 text-xl">
-                              <Tooltip color="default" content="Post" className="capitalize bg-black text-white">
-                                <IoEyeOutline className="text-gray-400" />
-                              </Tooltip>
-                              <Tooltip color="primary" content="Edit" className="capitalize">
-                                <RiEditLine className="text-sky-500" />
-                              </Tooltip>
-                              <Tooltip color="danger" content="Delete" className="capitalize">
-                                <MdDeleteOutline className="text-red-500" />
-                              </Tooltip>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-          </div> */}
-
-
-
           <div className="bg-red-00">
             <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
                 <table class="w-full text-md text-left rtl:text-right text-gray-500">
@@ -240,15 +138,112 @@ export default function Deshboard() {
                             <td class="px-6 py-4">
                                 $2999
                             </td>
-                            <td class="px-6 py-4 flex gap-3 text-xl">
+                            <td className="">
                               {/* <Tooltip color="default" content="Post" className="capitalize bg-black text-white absolute"> */}
-                                <IoEyeOutline className="text-gray-400" />
-                              {/* </Tooltip> */}
-                              {/* <Tooltip color="primary" content="Edit" className="capitalize"> */}
-                                <RiEditLine className="text-sky-500" />
+                              <div className='flex space-x-8 ps-5'>
+
+                              
+                              <div className='p-0 m-0'>
+                                {/* <IoEyeOutline className="text-gray-400" /> */}
+
+                                <Button className='text-md p-0 m-0' onPress={onOpen}>
+                                  <IoEyeOutline className="text-gray-400" />
+                                </Button>
+                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
+                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                                  <ModalContent>
+                                    {(onClose) => (
+                                      <>
+                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                                        <ModalBody>
+                                          <p> 
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Nullam pulvinar risus non risus hendrerit venenatis.
+                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                                          </p>
+                                        </ModalBody>
+                                        <ModalFooter>
+                                          <Button color="danger" variant="light" onPress={onClose}>
+                                            Close
+                                          </Button>
+                                          <Button color="primary" onPress={onClose}>
+                                            Delete
+                                          </Button>
+                                        </ModalFooter>
+                                      </>
+                                    )}
+                                  </ModalContent>
+                                </Modal>
+                              </div>
                               {/* </Tooltip> */}
                               {/* <Tooltip color="danger" content="Delete" className="capitalize"> */}
-                                <MdDeleteOutline className="text-red-500" />
+                                
+                              {/* </Tooltip> */}
+                              {/* <Tooltip color="primary" content="Edit" className="capitalize"> */}
+                              <div> 
+                                {/* <RiEditLine className="text-sky-500" /> */}
+                                <Button className='text-md' onPress={onOpen}>
+                                  <RiEditLine className="text-sky-500" />
+                                </Button>
+                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
+                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                                  <ModalContent>
+                                    {(onClose) => (
+                                      <>
+                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                                        <ModalBody>
+                                          <p> 
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Nullam pulvinar risus non risus hendrerit venenatis.
+                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                                          </p>
+                                        </ModalBody>
+                                        <ModalFooter>
+                                          <Button color="danger" variant="light" onPress={onClose}>
+                                            Close
+                                          </Button>
+                                          <Button color="primary" onPress={onClose}>
+                                            Delete
+                                          </Button>
+                                        </ModalFooter>
+                                      </>
+                                    )}
+                                  </ModalContent>
+                                </Modal>
+                              </div>
+                              {/* </Tooltip> */}
+                              {/* <Tooltip color="danger" content="Delete" className="capitalize"> */}
+                              <div>
+                                <Button className='text-md' onPress={onOpen}>
+                                  <MdDeleteOutline className="text-red-500"/>
+                                </Button>
+                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
+                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                                  <ModalContent>
+                                    {(onClose) => (
+                                      <>
+                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                                        <ModalBody>
+                                          <p> 
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Nullam pulvinar risus non risus hendrerit venenatis.
+                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                                          </p>
+                                        </ModalBody>
+                                        <ModalFooter>
+                                          <Button color="danger" variant="light" onPress={onClose}>
+                                            Close
+                                          </Button>
+                                          <Button color="primary" onPress={onClose}>
+                                            Delete
+                                          </Button>
+                                        </ModalFooter>
+                                      </>
+                                    )}
+                                  </ModalContent>
+                                </Modal>
+                              </div>
+                              </div>
                               {/* </Tooltip> */}
                             </td>
                         </tr>

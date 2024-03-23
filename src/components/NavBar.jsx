@@ -15,6 +15,18 @@ export default function Nav() {
   const router = useRouter();
   const [user, setUser] = useState({value: null})
   const [key, setKey] = useState(0)
+  
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const encodedSearchQuery = decodeURIComponent(searchQuery);
+    router.push(`/search?q=${encodedSearchQuery}`);
+  };
 
   const [imageURL, setImageURL] = useState('');
 
@@ -72,14 +84,20 @@ export default function Nav() {
           {/* <Logo/> */}
           <a href="/" className="text-3xl font-black">ReRead</a>
           {/* Search Field */}
-          <div className="w-full bg-white hidden md:flex items-center gap-x-1 border-[1px] border-gray/50 rounded-full px-4 py-1.5 focus-within:border-orange-600 group">
-            <FiSearch className="text-gray-500 group-focus-within:text-black duration-200" size={18} color="#000"/>
-            <input
-              // style={outline: "none"}
-              type="text"
-              placeholder="Search for Books"
-              className="placeholder:text-sm flex-1 outline-none border-none focus:outline-none"
-            />
+          <div className="w-full bg-white hidden md:flex items-center gap-x-1 border-[1px] border-gray/50 rounded-full px-4 py-2 focus-within:border-orange-600 group">
+            <form action="" className='md:flex items-center gap-x-1 rounded-full focus-within:border-orange-600 group' onSubmit={handleSubmit}>
+              <button className='pe-3'>
+                <FiSearch className="text-gray-500 group-focus-within:text-black duration-200" size={18} color="#000"/>
+              </button>
+              <input
+                // style={outline: "none"}
+                type="text"
+                placeholder="Search for Books"
+                className="placeholder:text-sm flex-1 outline-none border-none focus:outline-none"
+                value={searchQuery}
+                onChange={handleChange}
+              />
+            </form>
           </div>
 
           {/* sell button */}
