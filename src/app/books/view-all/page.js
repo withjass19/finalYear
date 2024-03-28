@@ -44,7 +44,7 @@ export default function ViewAll(props) {
 
       <div className='grid grid-cols-12 grid-rows-1 gap-5 m-2'>
         <div className="bg-white col-span-3 h-[800px]">
-          <p className='py-2'>Filters</p>
+          <p className='pt-3 pb-2 font-semibold text-xl px-7'>Filters</p>
           <Divider/>
           <div>
              <Filter/>
@@ -55,7 +55,7 @@ export default function ViewAll(props) {
           <div className="gap-8 grid grid-cols-2 sm:grid-cols-4">
             {books.map(book => (
               <Card shadow="sm" key={book._id} isPressable >
-              <Link href={`/jass/books/book/jx/${book._id}`}>
+              <Link href={`/books/book/${book._id}`}>
                 <CardBody className="overflow-visible p-0">
                   <Image
                     // shadow="sm"
@@ -96,7 +96,7 @@ export default function ViewAll(props) {
             ))} */}
           </div>
 
-          <div className='flex justify-center p-10'>
+          {/* <div className='flex justify-center p-10'>
             <Pagination 
             showControls 
             // showShadow 
@@ -110,7 +110,7 @@ export default function ViewAll(props) {
                 "bg-black shadow-xl from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
             }} 
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

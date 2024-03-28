@@ -91,7 +91,7 @@ export default function SignUp() {
   // }, [errors]);
   
   return (
-    <div class="bg-[url('/assets/images/bg.png')] h-[100vh] w-full flex justify-center items-center">
+    <div class="bg-[url('/assets/images/bg.png')] bg-no-repeat h-[100vh] w-full flex justify-center items-center">
        <div className="bg-white p-4 rounded-lg shadow-2xl">
             <div className="text-center mb-7">
                 <p className="text-2xl font-bold p-4 pb-2">Welcome To RERead!</p>

@@ -19,4 +19,9 @@
         -webkit-text-stroke-width: 1.2px;
         -webkit-text-stroke-color: white;
       }
+      .text-border-black{
+        font-family: sans-serif;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: black;
+      }
 } 

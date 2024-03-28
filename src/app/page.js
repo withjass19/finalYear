@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <div>
       <div className="scroll-smoth snap-y">
-        <div className="animation-slide relative min-h-screen w-full m-0">
           <Navbar/>
+        <div className="animation-slide relative min-h-screen w-full m-0">
           <Hero/>
         </div>
         <div classNamroutre="animation-slide relative">

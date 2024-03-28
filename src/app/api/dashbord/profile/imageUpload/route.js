@@ -1,5 +1,4 @@
 // change password route
-
 import mongoose from 'mongoose';
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
@@ -15,9 +14,9 @@ import { Book } from "@/database/models/bookschema";
 import { Upload } from '@/database/models/uploadSchema';
 
 cloudinary.config({ 
-    cloud_name: 'dci10aqu3', 
-    api_key: '141161387529431', 
-    api_secret: 'GfjHJXjpPlucpZ_0IqqDjdGLhNI' 
+    cloud_name: process.env.CLOUDINARY_NAME, 
+    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_secret: process.env.CLOUDINARY_SECRET
 });
 
 export async function POST(req, res){

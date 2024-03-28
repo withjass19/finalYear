@@ -49,7 +49,7 @@ export default function Jx({ params }) {
                     <div className="flex flex-col gap-2">
                       <p className="text-4xl font-black">{bookData.bookName}</p>
                       <p className="text-xl font-bold">{bookData.price}</p>
-                      <p className="text-sm font-medium border-green-400 bg-green-100 text-green-600 border-[2px] rounded-lg py-1.5 px-3 w-[330px] text-center mt-4">{bookData.status}</p>
+                      <p className="text-sm font-medium border-green-400 bg-green-100 text-green-600 border-[2px] rounded-lg py-1.5 px-3 w-[330px] text-center mt-4">Book is Available</p>
                     </div>
                     <div className="flex flex-col gap-3 pt-10">
                       <p>Subject: {bookData.subject}</p>

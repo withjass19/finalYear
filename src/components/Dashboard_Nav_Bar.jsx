@@ -22,12 +22,12 @@ export default function Dashboard_Nav_Bar() {
                     Deshboard
                 </div>
               </Link>
-              <Link href="/user/profile">
+              {/* <Link href="/user/profile">
                 <div className='flex items-center gap-3 p-2 px-5 bg-red-00 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
                     <RiUser3Line />
                     Profile
                 </div>
-              </Link>
+              </Link> */}
               <Link href="/user/sell">
                 <div className='flex items-center gap-3 p-2 px-5 bg-red-00  rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
                     <IoBookOutline />
@@ -38,7 +38,7 @@ export default function Dashboard_Nav_Bar() {
               <TbMessageCircle2 />
               Message
             </div>
-            <Link href="/user/account">
+            <Link href="/user/profile">
               <div className='flex items-center gap-3 p-2 px-5 bg-red-00 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
                 <IoSettingsOutline />
                 Account Setting

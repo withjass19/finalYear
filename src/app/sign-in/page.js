@@ -33,7 +33,7 @@ export default function SignIn() {
         if(response.data.success){
           localStorage.setItem('user', response.data.id);
           localStorage.setItem('token', response.data.token);
-          router.push('/profile')
+          router.push('/')
         }
         
         // Optionally, redirect the user to another page after successful sign-up

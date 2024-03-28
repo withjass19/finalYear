@@ -55,7 +55,7 @@ export default function Search() {
           <div className="gap-8 grid grid-cols-2 sm:grid-cols-4">
             {books.map(book => (
               <Card shadow="sm" key={book._id} isPressable >
-              <Link href={`/jass/books/book/jx/${book._id}`}>
+              <Link href={`/books/book/${book._id}`}>
                 <CardBody className="overflow-visible p-0">
                   <Image
                     // shadow="sm"
@@ -94,22 +94,6 @@ export default function Search() {
                 </Link>
               </Card>
             ))} */}
-          </div>
-
-          <div className='flex justify-center p-10'>
-            <Pagination 
-            showControls 
-            // showShadow 
-            // color="warning" 
-            total={10} 
-            initialPage={1}
-            classNames={{
-              // wrapper: "gap-0 overflow-visible h-8 rounded border border-divider",
-              // item: "w-8 h-8 text-small rounded-none bg-transparent",
-              cursor:
-                "bg-black shadow-xl from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
-            }} 
-            />
           </div>
         </div>
       </div>

@@ -17,15 +17,16 @@ export default function Books() {
           <div className='flex justify-between items-center px-32 py-5'>
             <div className='w-72'>
               <p> 
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, dicta!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quae.
+                Discover ReRead: Indias premier marketplace for preloved books. Unleash forgotten treasures and find new favorites today!
               </p>
             </div>
-            <div className='ps-10'>
-              <Link href="/books/view-all">
-                <button className='px-10 py-2 rounded-full ring-offset-2 ring-4 ring-slate-500 font-medium text-md'>More collections</button>
-              </Link>
-            </div>
+            <Link href="/books/view-all">
+              <div className='ps-10'>
+                  <button className='px-10 py-2 rounded-full ring-offset-2 ring-4 ring-slate-500 font-medium text-md cursor-pointer'>
+                    More collections
+                  </button>
+              </div>
+            </Link>
           </div>
         </div>
         <div className='flex justify-center items-center w-[100%] relative -top-16 bg-transparent h-80'>

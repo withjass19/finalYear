@@ -12,11 +12,13 @@ import { IoEyeOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoBookOutline } from "react-icons/io5";
 import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
+import { useRouter } from 'next/navigation';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
 import Link from 'next/link';
 import axios from 'axios';
 
 export default function Deshboard() {
+  const router = useRouter()
 
   const [postData, setpostData] = useState([]);
   const [data, setData] = useState(false);
@@ -62,6 +64,23 @@ export default function Deshboard() {
     fetchData();
     
   }, []);
+
+  const handleDeleteItem = async(id) => {
+    console.log(id);
+    // try{
+      const formData = new FormData();
+      formData.set('bookid', id);
+      const response = await axios.post('/api/books/deletepost', formData);
+      console.log('successfully:', response);
+    // }catch{
+      // console.log("error")
+    // }
+  }
+
+  const editButton = () => {
+    return router.push('/user/profile')
+  }
+  
   return (
     <div>
       <Nav/>
@@ -84,7 +103,7 @@ export default function Deshboard() {
               <div className='text-center mt-3 absolute top-80'>
                 <p className='text-2xl font-semibold'>Name</p>
                 <p className='text-gray-400 font-medium'>@UserName</p>
-                <button className='bg-black text-white font-medium py-1.5 px-10 rounded-lg border-black border-[2px] hover:text-black hover:bg-white mt-5'>Edit</button>
+                <button className='bg-black text-white font-medium py-1.5 px-10 rounded-lg border-black border-[2px] hover:text-black hover:bg-white mt-5' onClick={editButton}>Edit</button>
               </div>
             </div>
           </div>
@@ -138,113 +157,16 @@ export default function Deshboard() {
                             <td class="px-6 py-4">
                                 $2999
                             </td>
-                            <td className="">
-                              {/* <Tooltip color="default" content="Post" className="capitalize bg-black text-white absolute"> */}
-                              <div className='flex space-x-8 ps-5'>
-
-                              
-                              <div className='p-0 m-0'>
-                                {/* <IoEyeOutline className="text-gray-400" /> */}
-
-                                <Button className='text-md p-0 m-0' onPress={onOpen}>
-                                  <IoEyeOutline className="text-gray-400" />
-                                </Button>
-                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
-                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                                  <ModalContent>
-                                    {(onClose) => (
-                                      <>
-                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-                                        <ModalBody>
-                                          <p> 
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Nullam pulvinar risus non risus hendrerit venenatis.
-                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                                          </p>
-                                        </ModalBody>
-                                        <ModalFooter>
-                                          <Button color="danger" variant="light" onPress={onClose}>
-                                            Close
-                                          </Button>
-                                          <Button color="primary" onPress={onClose}>
-                                            Delete
-                                          </Button>
-                                        </ModalFooter>
-                                      </>
-                                    )}
-                                  </ModalContent>
-                                </Modal>
-                              </div>
-                              {/* </Tooltip> */}
-                              {/* <Tooltip color="danger" content="Delete" className="capitalize"> */}
-                                
-                              {/* </Tooltip> */}
-                              {/* <Tooltip color="primary" content="Edit" className="capitalize"> */}
-                              <div> 
-                                {/* <RiEditLine className="text-sky-500" /> */}
-                                <Button className='text-md' onPress={onOpen}>
-                                  <RiEditLine className="text-sky-500" />
-                                </Button>
-                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
-                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                                  <ModalContent>
-                                    {(onClose) => (
-                                      <>
-                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-                                        <ModalBody>
-                                          <p> 
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Nullam pulvinar risus non risus hendrerit venenatis.
-                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                                          </p>
-                                        </ModalBody>
-                                        <ModalFooter>
-                                          <Button color="danger" variant="light" onPress={onClose}>
-                                            Close
-                                          </Button>
-                                          <Button color="primary" onPress={onClose}>
-                                            Delete
-                                          </Button>
-                                        </ModalFooter>
-                                      </>
-                                    )}
-                                  </ModalContent>
-                                </Modal>
-                              </div>
-                              {/* </Tooltip> */}
-                              {/* <Tooltip color="danger" content="Delete" className="capitalize"> */}
-                              <div>
-                                <Button className='text-md' onPress={onOpen}>
-                                  <MdDeleteOutline className="text-red-500"/>
-                                </Button>
-                                {/* <MdDeleteOutline className="text-red-500" onPress={onOpen}/> */}
-                                <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                                  <ModalContent>
-                                    {(onClose) => (
-                                      <>
-                                        <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-                                        <ModalBody>
-                                          <p> 
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Nullam pulvinar risus non risus hendrerit venenatis.
-                                            Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                                          </p>
-                                        </ModalBody>
-                                        <ModalFooter>
-                                          <Button color="danger" variant="light" onPress={onClose}>
-                                            Close
-                                          </Button>
-                                          <Button color="primary" onPress={onClose}>
-                                            Delete
-                                          </Button>
-                                        </ModalFooter>
-                                      </>
-                                    )}
-                                  </ModalContent>
-                                </Modal>
-                              </div>
-                              </div>
-                              {/* </Tooltip> */}
+                            <td className="flex gap-4 items-center px-6 py-4">
+                              <button>
+                                <IoEyeOutline className="text-gray-400 text-2xl" />
+                              </button>
+                              <button>
+                                <RiEditLine className="text-sky-500 text-2xl" />
+                              </button>
+                              <button onClick={() => handleDeleteItem(books._id)}>
+                                <MdDeleteOutline className="text-red-500 text-2xl"/>
+                              </button>
                             </td>
                         </tr>
                       ))}

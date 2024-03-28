@@ -44,7 +44,7 @@ export default function Hero() {
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.6s"
                   }}
                 >
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit dolore eum temporibus sunt tenetur reiciendis, porro impedit debitis facere minus?
+                  Welcome to ReRead, where bookworms unite to share beloved stories. Sell or buy secondhand books effortlessly and indulge in affordable reading experiences!
                 </p>
                 <Link 
                   href= { isAuthenticate.value ?  "/books" : "/sign-in"}

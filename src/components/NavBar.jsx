@@ -7,6 +7,7 @@ import {AiOutlineUser} from "react-icons/ai"
 import { IoNotifications } from "react-icons/io5";
 import Link from "next/link";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
+import {Navbar} from "@nextui-org/react"
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
@@ -79,7 +80,7 @@ export default function Nav() {
   // };
 
   return (
-    <div user={user} key={key} className="h-20 bg-white">
+    <div user={user} key={key} className="h-20 bg-white sticky top-0 z-50">
         <nav className="max-w-screen-xl mx-auto px-4 xl:px-0 py-10 h-full flex items-center justify-between md:gap-x-5 md:justify-start">
           {/* <Logo/> */}
           <a href="/" className="text-3xl font-black">ReRead</a>
@@ -101,13 +102,30 @@ export default function Nav() {
           </div>
 
           {/* sell button */}
-          <Link href="/books/post">
+          {!user.value ? (
+              <Link href="/sign-up">
+                <div className="bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-500 duration-200">
+                  <IoAdd className="text-xl"/>
+                  <p className="text-sm font-semibold pe-3">Sell</p>
+                  {/* <span className="bg-white text-orange-500 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black">0</span> */}
+                </div>
+              </Link>
+            ): (
+              <Link href="/books/post">
+                <div className="bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-500 duration-200">
+                  <IoAdd className="text-xl"/>
+                  <p className="text-sm font-semibold pe-3">Sell</p>
+                  {/* <span className="bg-white text-orange-500 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black">0</span> */}
+                </div>
+              </Link>
+            )}
+          {/* <Link href="/books/post">
             <div className="bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-500 duration-200">
               <IoAdd className="text-xl"/>
-              <p className="text-sm font-semibold pe-3">Sell</p>
+              <p className="text-sm font-semibold pe-3">Sell</p> */}
               {/* <span className="bg-white text-orange-500 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black">0</span> */}
-            </div>
-          </Link>
+            {/* </div>
+          </Link> */}
 
           <div>
             <IoNotifications className="text-2xl"/>
@@ -158,19 +176,19 @@ export default function Nav() {
             </Link>
           </DropdownItem>
           <DropdownItem key="settings">
-            <Link href="/profile">
+            <Link href="/user/profile">
               My Settings
             </Link>
           </DropdownItem>
-          <DropdownItem key="team_settings">Team Settings</DropdownItem>
-          <DropdownItem key="analytics">
+          {/* <DropdownItem key="team_settings">Team Settings</DropdownItem> */}
+          {/* <DropdownItem key="analytics">
             Analytics
-          </DropdownItem>
-          <DropdownItem key="system">System</DropdownItem>
-          <DropdownItem key="configurations">Configurations</DropdownItem>
-          <DropdownItem key="help_and_feedback">
+          </DropdownItem> */}
+          {/* <DropdownItem key="system">System</DropdownItem> */}
+          {/* <DropdownItem key="configurations">Configurations</DropdownItem> */}
+          {/* <DropdownItem key="help_and_feedback">
             Help & Feedback
-          </DropdownItem>
+          </DropdownItem> */}
           <DropdownItem key="logout" color="danger" onClick={logout}>
             Log Out
           </DropdownItem>
