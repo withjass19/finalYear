@@ -94,7 +94,7 @@ export default function SignIn() {
                   required
                 />
                 <div className="mb-7 text-end">
-                    <span className="text-sm font-medium text-blue-500 cursor-pointer">
+                    <span className="text-sm font-medium text-black cursor-pointer">
                         <Link href="/sign-in/forgot-password">Forgot Password?</Link>
                     </span>
                 </div>
