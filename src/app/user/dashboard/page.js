@@ -135,11 +135,14 @@ export default function Deshboard() {
                     <thead class="text-sm text-gray-700 uppercase bg-gray-200">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Product name
+                                Book Name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Color
+                                author
                             </th>
+                            {/* <th scope="col" class="px-6 py-3">
+                                ibmn
+                            </th> */}
                             <th scope="col" class="px-6 py-3">
                                 Category
                             </th>
@@ -165,13 +168,16 @@ export default function Deshboard() {
                                 {books.bookName}
                           </th>
                           <td class="px-6 py-4">
-                                Silver
+                                {books.author}
+                            </td>
+                            {/* <td class="px-6 py-4">
+                                {books.ISBN}
+                            </td> */}
+                            <td class="px-6 py-4">
+                                {books.category}
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
+                                &#x20B9;{books.price}
                             </td>
                             <td className="flex gap-4 items-center px-6 py-4">
                               <button>
