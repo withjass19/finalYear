@@ -22,6 +22,7 @@ export default function Deshboard() {
   const [postData, setpostData] = useState([]);
   const [data, setData] = useState(false);
   const [imageURL, setImageURL] = useState('');
+  const [user, setUser] = useState("User");
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -37,6 +38,7 @@ export default function Deshboard() {
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
         console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
+        setUser(response.data.username)
       }catch{
         console.log("error")
         // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
@@ -115,8 +117,8 @@ export default function Deshboard() {
                 <Image className='rounded-full' src={imageURL} width={150} height={150} alt='user'/>
               </div>
               <div className='text-center mt-3 absolute top-80'>
-                <p className='text-2xl font-semibold'>Name</p>
-                <p className='text-gray-400 font-medium'>@UserName</p>
+                <p className='text-2xl font-semibold'>{user}</p>
+                <p className='text-gray-400 font-medium'>@{user}</p>
                 <button className='bg-black text-white font-medium py-1.5 px-10 rounded-lg border-black border-[2px] hover:text-black hover:bg-white mt-5' onClick={editButton}>Edit</button>
               </div>
             </div>
