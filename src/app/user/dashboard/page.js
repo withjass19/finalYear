@@ -2,9 +2,7 @@
 import Nav from '@/components/NavBar'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import { AiOutlineAppstore } from "react-icons/ai";
-import { RiUser3Line } from "react-icons/ri";
-import { TbMessageCircle2 } from "react-icons/tb";
+
 import { MdDeleteOutline } from "react-icons/md";
 import { RiEditLine } from "react-icons/ri";
 import {Tooltip, Button} from "@nextui-org/react";
@@ -16,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
 import Link from 'next/link';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Deshboard() {
   const router = useRouter()
@@ -72,6 +71,16 @@ export default function Deshboard() {
       formData.set('bookid', id);
       const response = await axios.post('/api/books/deletepost', formData);
       console.log('successfully:', response);
+      toast.success(response.data.message)
+
+      let reloadFlag = false;
+
+      setTimeout(() => {
+          if (!reloadFlag) {
+              reloadFlag = true;
+              window.location.reload();
+          }
+      }, 2500);
     // }catch{
       // console.log("error")
     // }
@@ -88,6 +97,11 @@ export default function Deshboard() {
       <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12' >
         <div className='bg-black col-span-2'>
           <Dashboard_Nav_Bar/>
+          <Toaster
+                    // className="absolute -top-36"
+                    position="bottom-left"
+                    reverseOrder={false}
+                  />
         </div>
         <div className='col-span-10 bg-slate-100 flex flex-col gap-4 p-8 px-20'>
           <div className='text-3xl font-semibold'>

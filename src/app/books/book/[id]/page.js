@@ -64,7 +64,7 @@ export default function Book({ params }) {
           <div className="max-w-screen-xl mx-auto bg-white rounded-lg">
             <div className="grid grid-cols-12">
               <div className="col-span-5 p-5 py-16 flex justify-center items-center">
-                  <Skeleton>
+                  <Skeleton radius="lg">
                     <div className="h-[500px] w-[350px]"></div>
                   </Skeleton>
               {/* <Image className='h-[500px] w-[350px]' src={bookData.url} width={200} height={200} alt=""/> */}

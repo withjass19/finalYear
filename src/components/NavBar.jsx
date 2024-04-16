@@ -111,7 +111,7 @@ export default function Nav() {
                 </div>
               </Link>
             ): (
-              <Link href="/books/post">
+              <Link href="/user/sell">
                 <div className="bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-500 duration-200">
                   <IoAdd className="text-xl"/>
                   <p className="text-sm font-semibold pe-3">Sell</p>

@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
 import path from "path";
@@ -83,7 +82,7 @@ export async function POST(req, res){
     // Upload to the cloud after saving the photo file to the temp folder
     try {
 
-        const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'js_upload' });
+        const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'book_upload' });
         console.log('Cloudinary URL:', cloudinaryResponse.url);
 
         const decoded = jwt.verify(token, 'jwtSecret');
@@ -115,8 +114,8 @@ export async function POST(req, res){
     }
 
     fs.unlink(uploadDir)
-    
-    return NextResponse.json({"message": "upload", success: true});
+
+    return NextResponse.json({message: "Successfully uploaded", success: true});
 }
 
 

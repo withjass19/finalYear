@@ -3,7 +3,7 @@ import { User } from "@/database/models/userSchema";
 import { NextResponse } from "next/server";
 const CryptoJS = require('crypto-js');
 
-export async function  POST(req, res){
+export async function POST(req, res){
     connectDB()
 
     const {username, email, phoneNumber, password} = await req.json();

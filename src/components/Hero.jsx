@@ -47,7 +47,7 @@ export default function Hero() {
                   Welcome to ReRead, where bookworms unite to share beloved stories. Sell or buy secondhand books effortlessly and indulge in affordable reading experiences!
                 </p>
                 <Link 
-                  href= { isAuthenticate.value ?  "/books" : "/sign-in"}
+                  href= { isAuthenticate.value ?  "/books/view-all" : "/sign-in"}
                   // href="/books"
                   style={{
                     transform: isInView ? "none" : "translateX(-200px)",

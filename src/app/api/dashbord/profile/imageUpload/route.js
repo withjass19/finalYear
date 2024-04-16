@@ -1,16 +1,12 @@
 // change password route
-import mongoose from 'mongoose';
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
-import { User } from "@/database/models/userSchema";
-const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
 import path from "path";
 import fs from "fs/promises";
 import os from 'os'
 import { v4 as uuidv4 } from 'uuid';
 import cloudinary from 'cloudinary';
-import { Book } from "@/database/models/bookschema";
 import { Upload } from '@/database/models/uploadSchema';
 
 cloudinary.config({ 

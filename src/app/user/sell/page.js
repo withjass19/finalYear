@@ -9,13 +9,13 @@ import { MdDeleteOutline } from "react-icons/md";
 import { RiEditLine } from "react-icons/ri";
 import {Tooltip, Button} from "@nextui-org/react";
 import { IoEyeOutline } from "react-icons/io5";
-import Link from 'next/link';
 import {React, useRef, useState} from 'react'
 import {Input} from "@nextui-org/react";
 import { FiBookOpen } from "react-icons/fi";
 import {useDropzone} from 'react-dropzone';
 import axios from 'axios';
 import Dashboard_Nav_Bar from '@/components/Dashboard_Nav_Bar';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Sell() {
     const {getRootProps, getInputProps, open, acceptedFiles} = useDropzone({
@@ -41,6 +41,8 @@ export default function Sell() {
       const [category, setCategory] = useState("");
       const [original_price, setOriginal_price] = useState("");
       const [selling_price, setSelling_price] = useState("");
+      // const [notify, setNotify] = useState("");
+      // let notify;
     
       const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -72,11 +74,15 @@ export default function Sell() {
             }
           });
           console.log('Upload successful:', response.data);
+          toast.success(response.data.message)
+          // window.location.reload() 
         } catch (error) {
           console.error('Upload failed:', error);
         }
     
       }
+
+      // const notify = () => toast(response.data.message);
   return (
     <div>
       <Nav/>
@@ -84,6 +90,11 @@ export default function Sell() {
       <div className='bg-red-200 w-[100%] h-[100%] grid grid-cols-12'>
         <div className='bg-black col-span-2'>
           <Dashboard_Nav_Bar/>
+          <Toaster
+                    // className="absolute -top-36"
+                    position="bottom-left"
+                    reverseOrder={false}
+                  />
         </div>
         <div className='col-span-10 bg-slate-100 flex flex-col gap-4 p-8'>
           <div className="bg-red-00 flex justify-center">
@@ -95,7 +106,9 @@ export default function Sell() {
                     <FiBookOpen/>
                     </div>
                 </div>
+                  
                 <form onSubmit={handleSubmit} method='GET' className='flex flex-col gap-5 px-20'>
+                    
                     <div>
                     <div className=" text-center border-[2px] border-slate-400 border-dashed rounded-lg">
                         <div {...getRootProps({className: 'dropzone p-10'})}>
