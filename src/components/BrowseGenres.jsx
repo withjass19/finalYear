@@ -87,7 +87,11 @@ export default function BrowseGenres() {
                         transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 1.4s"
                     }}
                 >
-                    <BookCard1/>
+                    <BookCard1
+                        bookName ="Action"
+                        amount= "$2"
+                        image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -96,7 +100,11 @@ export default function BrowseGenres() {
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 1.6s"
                 }}
                 >
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -104,7 +112,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 1.8s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -112,7 +124,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 2s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -120,7 +136,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 2.2s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -128,7 +148,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 2.4s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -136,7 +160,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 2.6s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -144,7 +172,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 2.8s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -152,7 +184,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 3s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -160,7 +196,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 3.2s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -168,7 +208,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 3.4s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
                 <div
                 style={{
@@ -176,7 +220,11 @@ export default function BrowseGenres() {
                     opacity: isInView ? 1 : 0,
                     transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 3.6s"
                 }}>
-                    <BookCard1/>
+                    <BookCard1
+                    bookName ="Action"
+                    amount= "$2"
+                    image = "/assets/images/zero-to-one.jpeg"
+                    />
                 </div>
             </div>
             <div className='flex justify-center mt-3'>
