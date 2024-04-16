@@ -60,7 +60,7 @@ export default function Hero() {
             </div>
             <div className='flex flex-col justify-center items-center py-9 ps-16'>
                 <div 
-                  className='flex justify-center items-center font-medium relative z-50 top-20 left-32 p-2 rounded-lg backdrop-blur-lg bg-black/5'
+                  className='flex justify-center items-center font-medium relative z-40 top-20 left-32 p-2 rounded-lg backdrop-blur-lg bg-black/5'
                   style={{
                     transform: isInView ? "none" : "translateX(-200px)",
                     opacity: isInView ? 1 : 0,

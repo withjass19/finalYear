@@ -7,7 +7,6 @@ import {AiOutlineUser} from "react-icons/ai"
 import { IoNotifications } from "react-icons/io5";
 import Link from "next/link";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
-import {Navbar} from "@nextui-org/react"
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
@@ -16,6 +15,9 @@ export default function Nav() {
   const router = useRouter();
   const [user, setUser] = useState({value: null})
   const [key, setKey] = useState(0)
+
+  const [imageURL, setImageURL] = useState('');
+  const [username, setUsername] = useState('User');
   
   const [searchQuery, setSearchQuery] = useState('');
   
@@ -29,7 +31,7 @@ export default function Nav() {
     router.push(`/search?q=${encodedSearchQuery}`);
   };
 
-  const [imageURL, setImageURL] = useState('');
+  
 
   useEffect(() => {
     try{
@@ -53,6 +55,7 @@ export default function Nav() {
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
         console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
+        setUsername(response.data.username);
       }catch{
         console.log("error")
         // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
@@ -168,7 +171,8 @@ export default function Nav() {
           <DropdownItem key="profile" className="h-14 gap-2">
             {/* <p className="font-bold">Signed in as</p> */}
             {/* <p className="font-bold"> {user.value.name} </p> */}
-            <p className="font-bold">@tonyreichert</p>
+            {/* <p className="font-bold">@tonyreichert</p> */}
+            <p className="font-bold">@{ username }</p>
           </DropdownItem>
           <DropdownItem key="analytics">
             <Link href="/user/dashboard">
