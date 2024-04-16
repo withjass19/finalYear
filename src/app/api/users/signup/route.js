@@ -17,7 +17,7 @@ export async function POST(req, res){
         password: hashedPassword,
     });
     const result = await data.save()
-    console.log(data);
+    // console.log(data);
 
     return NextResponse.json({success: true})
 } 

@@ -21,7 +21,7 @@ export async function POST(req){
     // const id = '65d4961788d80b97480f90e7'
     const data = await Book.findOne({_id: id});
     
-    console.log(data);
+    // console.log(data);
     
     return NextResponse.json({result: data});
 }

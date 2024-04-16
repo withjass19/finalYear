@@ -19,7 +19,7 @@ export async function POST(req, res){
 
         const decoded = jwt.verify(token, 'jwtSecret');
 
-        console.log(decoded.user)
+        // console.log(decoded.user)
 
         const user = await User.findOne({ _id: decoded.user })
 

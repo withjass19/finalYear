@@ -14,9 +14,9 @@ export async function POST(req, res){
     const data = await req.formData();
     const token = data.get('token')
 
-    console.log('Token:', token);
+    // console.log('Token:', token);
     const decoded = jwt.verify(token, 'jwtSecret');
-    console.log(decoded.name, decoded.email, decoded.user)
+    // console.log(decoded.name, decoded.email, decoded.user)
     const user = await Book.find( {UId: decoded.user} ) ;
     if(user.length == 0){
         console.log("not find");

@@ -18,19 +18,19 @@ export async function POST(req, res){
 
         const decoded = jwt.verify(token, 'jwtSecret');
 
-        console.log(decoded.user)  
+        // console.log(decoded.user)  
 
         const user_Img = await Upload.findOne({ UId: decoded.user })
 
         const user_info = await User.findOne({_id : decoded.user})
         
-        console.log(user_info.email);
+        // console.log(user_info.email);
 
         if(!user_Img){
             return NextResponse.json({"message": "Method Not Allowed", success: false, username: user_info.username, url: 'http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png'});
         }
         
-        console.log(user_Img._id)
+        // console.log(user_Img._id)
 
         return NextResponse.json({"message": "Password updated successfully", success: true, url: user_Img.url, userName: user_info.username});
         

@@ -3,17 +3,6 @@ import mongoose from "mongoose";
 import connectDB from "@/database/config/db";
 import { NextResponse } from "next/server";
 
-// async function connectDB(){
-//     const connect = await mongoose.connect('mongodb://localhost:27017/semple');
-
-//     if(!connect){
-//         console.log("Not Connect DB")
-//     }
-//     else{
-//         console.log("Connect DB");
-//     }
-// }
-
 export async function GET(){
   connectDB()
 
@@ -38,9 +27,6 @@ export async function GET(){
     const allDocuments = await Book.find({}, '_id');
 
     const documentIds = allDocuments.map(doc => doc._id);
-
-    console.log('Total number of documents:', totalDocuments);
-    console.log('All document IDs:', documentIds);
 
     // console.log('Total number of documents:', totalDocuments);
     // console.log('All document IDs:', documentIds);

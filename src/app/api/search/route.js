@@ -17,7 +17,7 @@ export async function POST(req){
 
     // const searchResults = await Book.find({ bookName: { $regex: seachBook, $options: 'i' } });
 
-    console.log(searchResults)
+    // console.log(searchResults)
 
 
     // const data = new Bookx({

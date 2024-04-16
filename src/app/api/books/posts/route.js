@@ -51,7 +51,7 @@ export async function POST(req, res){
     const Selling_price = data.get('selling_price');
     const token = data.get('token')
 
-    console.log('Token:', token);
+    // console.log('Token:', token);
 
     // console.log(file);
     
@@ -65,15 +65,15 @@ export async function POST(req, res){
     const buffer = Buffer.from(byteData);
 
     const filename =  file.name.replaceAll(" ", "_");
-    console.log(filename);
+    // console.log(filename);
 
     const name = uuidv4();
     const ext = file.type.split("/")[1]
-    console.log({name, ext});
+    // console.log({name, ext});
 
     const tempdir = os.tmpdir()
     const uploadDir = path.join(tempdir, `/${name}.${ext}`)
-    console.log(uploadDir);
+    // console.log(uploadDir);
     fs.writeFile(uploadDir, buffer)
     
 
@@ -83,10 +83,10 @@ export async function POST(req, res){
     try {
 
         const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'book_upload' });
-        console.log('Cloudinary URL:', cloudinaryResponse.url);
+        // console.log('Cloudinary URL:', cloudinaryResponse.url);
 
         const decoded = jwt.verify(token, 'jwtSecret');
-        console.log(decoded.name, decoded.email, decoded.user)
+        // console.log(decoded.name, decoded.email, decoded.user)
 
         const data = new Book({
             url: cloudinaryResponse.url,
@@ -108,7 +108,7 @@ export async function POST(req, res){
 
          await data.save()
         
-        console.log(data);
+        // console.log(data);
     } catch (error) {
         console.error('Error uploading to Cloudinary:', error);
     }

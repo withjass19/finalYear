@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 export async function  POST(req, res){
     connectDB()
     const {email, password} = await req.json();
-    console.log(email, password);
+    // console.log(email, password);
     let user = await  User.findOne({ email: email });
     if(user){
 

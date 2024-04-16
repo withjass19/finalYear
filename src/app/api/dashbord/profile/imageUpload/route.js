@@ -24,8 +24,8 @@ export async function POST(req, res){
         const token = data.get('token')
         const file = data.get('image')
         
-        console.log(token)
-        console.log(file)
+        // console.log(token)
+        // console.log(file)
 
         if(!file){
             return NextResponse.json({"message": "error", success: false})
@@ -35,15 +35,15 @@ export async function POST(req, res){
         const buffer = Buffer.from(byteData);
 
         const filename =  file.name.replaceAll(" ", "_");
-        console.log(filename);
+        // console.log(filename);
 
         const name = uuidv4();
         const ext = file.type.split("/")[1]
-        console.log({name, ext});
+        // console.log({name, ext});
 
         const tempdir = os.tmpdir()
         const uploadDir = path.join(tempdir, `/${name}.${ext}`)
-        console.log(uploadDir);
+        // console.log(uploadDir);
         fs.writeFile(uploadDir, buffer)
 
         try {
@@ -51,13 +51,13 @@ export async function POST(req, res){
             // console.log('Cloudinary URL:', cloudinaryResponse.url);
 
             const decoded = jwt.verify(token, 'jwtSecret');
-            console.log(decoded.name, decoded.email, decoded.user)
+            // console.log(decoded.name, decoded.email, decoded.user)
 
             const user = await Upload.findOne({ UId: decoded.user })
 
             if(!user){
                 const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'user_profile_upload' });
-            console.log('Cloudinary URL:', cloudinaryResponse.url);
+                // console.log('Cloudinary URL:', cloudinaryResponse.url);
 
                 const data = new Upload({
                     UId: decoded.user,
@@ -66,13 +66,13 @@ export async function POST(req, res){
 
                 const result = await data.save();
 
-                console.log(result);
+                // console.log(result);
             }else{
                 const cloudinaryResponse = await cloudinary.v2.uploader.upload(uploadDir, { folder: 'user_profile_upload' });
-                console.log('Cloudinary URL:', cloudinaryResponse.url);
+                // console.log('Cloudinary URL:', cloudinaryResponse.url);
                 user.url = cloudinaryResponse.url;
                 const data = await user.save();
-                console.log("update:", data)
+                // console.log("update:", data)
             }
         } catch (error) {
             console.error('Error uploading to Cloudinary:', error);
