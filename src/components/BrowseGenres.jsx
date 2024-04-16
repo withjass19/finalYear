@@ -88,9 +88,9 @@ export default function BrowseGenres() {
                     }}
                 >
                     <BookCard1
-                        bookName ="Action"
+                        bookName ="Political theory II"
                         amount= "$2"
-                        image = "/assets/images/zero-to-one.jpeg"
+                        image = "/assets/images/books/1.jpeg"
                     />
                 </div>
                 <div
@@ -103,7 +103,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/2.jpeg"
                     />
                 </div>
                 <div
@@ -115,7 +115,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/3.jpeg"
                     />
                 </div>
                 <div
@@ -127,7 +127,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/4.jpeg"
                     />
                 </div>
                 <div
@@ -139,7 +139,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/5.jpeg"
                     />
                 </div>
                 <div
@@ -151,7 +151,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/6.jpg"
                     />
                 </div>
                 <div
@@ -163,7 +163,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/7.jpeg"
                     />
                 </div>
                 <div
@@ -175,7 +175,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/8.png"
                     />
                 </div>
                 <div
@@ -187,7 +187,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/9.jpeg"
                     />
                 </div>
                 <div
@@ -199,7 +199,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/10.jpg"
                     />
                 </div>
                 <div
@@ -211,7 +211,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/11.jpeg"
                     />
                 </div>
                 <div
@@ -223,7 +223,7 @@ export default function BrowseGenres() {
                     <BookCard1
                     bookName ="Action"
                     amount= "$2"
-                    image = "/assets/images/zero-to-one.jpeg"
+                    image = "/assets/images/books/12.jpg"
                     />
                 </div>
             </div>
