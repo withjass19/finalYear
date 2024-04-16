@@ -34,10 +34,10 @@ export default function Dashboard_Nav_Bar() {
                     Upload book
                 </div>
               </Link>
-            <div className='flex items-center gap-3 p-2 px-5 bg-red-00 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
+            {/* <div className='flex items-center gap-3 p-2 px-5 bg-red-00 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
               <TbMessageCircle2 />
               Message
-            </div>
+            </div> */}
             <Link href="/user/profile">
               <div className='flex items-center gap-3 p-2 px-5 bg-red-00 rounded-lg border-black border-[2px] hover:bg-gray-700 hover:border-gray-500 hover:border-[2px]'>
                 <IoSettingsOutline />
