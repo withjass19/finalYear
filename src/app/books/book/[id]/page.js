@@ -127,8 +127,8 @@ export default function Book({ params }) {
                     <div className="flex flex-col gap-2">
                       <p className="text-4xl font-black">{bookData.bookName}</p>
                       <div className='flex gap-4'>
-                        <p className="text-xl font-bold">{bookData.selling_prince}</p>
-                        <p className="text-xl font-bold text-gray-600/50 line-through decoration-2">{bookData.price}</p>
+                        <p className="text-xl font-bold">&#x20B9;{bookData.selling_prince}</p>
+                        <p className="text-xl font-bold text-gray-600/50 line-through decoration-2">&#x20B9;{bookData.price}</p>
                       </div>
                       <p className="text-sm font-medium border-green-400 bg-green-100 text-green-600 border-[2px] rounded-lg py-1.5 px-3 w-[330px] text-center mt-4">Book is Available</p>
                     </div>
