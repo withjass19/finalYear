@@ -125,7 +125,7 @@ export default function Deshboard() {
           </div>
 
           <div className='pt-6'>
-            <p className='text-3xl font-semibold '>Library</p>
+            <p className='text-3xl font-semibold '>Your uploads</p>
             <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices lectus sem.</p>
           </div>
 
