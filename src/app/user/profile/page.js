@@ -43,11 +43,11 @@ export default function Profile() {
     formData.set('new_password', newPswd);
 
     const token = localStorage.getItem('token');
-    console.log('Token:', localStorage.getItem('token'));
+    // console.log('Token:', localStorage.getItem('token'));
     formData.set('token', token);
     try {
       const response = await axios.post('/api/dashbord/profile/changePassword', formData);
-      console.log(response.data);
+      // console.log(response.data);
       
       // Optionally, redirect the user to another page after successful sign-up
       // router.push('/profile')
@@ -66,11 +66,11 @@ export default function Profile() {
         const formData = new FormData();
   
         const token = localStorage.getItem('token');
-        console.log('Token:', localStorage.getItem('token'));
+        // console.log('Token:', localStorage.getItem('token'));
         formData.set('token', token);
         // Example fetch function, replace with your actual fetch logic
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
-        console.log('Profile Data successfully:', response.data);
+        // console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
       }catch{
         console.log("error")
@@ -83,12 +83,12 @@ export default function Profile() {
       const formData = new FormData();
   
       const token = localStorage.getItem('token');
-      console.log('Token:', localStorage.getItem('token'));
+      // console.log('Token:', localStorage.getItem('token'));
       formData.set('token', token);
       // Example fetch function, replace with your actual fetch logic
       const response = await axios.post('/api/dashbord/profile/generalIinformation', formData);
-      console.log('Data sent successfully:', response.data);
-      console.log('Data successfully:', response.data.user.username);
+      // console.log('Data sent successfully:', response.data);
+      // console.log('Data successfully:', response.data.user.username);
       setUsername(response.data.user.username);
       setEmail(response.data.user.email);
       setPhoneNo(response.data.user.phoneNo);
@@ -110,7 +110,7 @@ export default function Profile() {
       formData.append('image', file);
 
       const token = localStorage.getItem('token');
-      console.log('Token:', localStorage.getItem('token'));
+      // console.log('Token:', localStorage.getItem('token'));
       formData.set('token', token);
 
       // Make a POST request to the backend endpoint to upload the image
@@ -120,7 +120,7 @@ export default function Profile() {
         }
       });
 
-      console.log('Image uploaded successfully:', response.data);
+      // console.log('Image uploaded successfully:', response.data);
     } catch (error) {
       console.error('Error uploading image:', error);
     }

@@ -26,7 +26,7 @@ export default function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -37,7 +37,7 @@ export default function SignUp() {
     if (formData.username.trim() === '') {
       // Display error message for username
       errors.username = 'Username is required';
-      console.error(errors.username);
+      // console.error(errors.username);
       // return;
     }
 
@@ -46,7 +46,7 @@ export default function SignUp() {
     if (!emailRegex.test(formData.email)) {
       // Display error message for email
       errors.email = 'Invalid email address';
-      console.error('Invalid email address');
+      // console.error('Invalid email address');
       // return;
     }
 
@@ -55,7 +55,7 @@ export default function SignUp() {
     if (!phoneRegex.test(formData.phoneNumber)) {
       // Display error message for phone number
       errors.phoneNumber = 'Invalid phone number';
-      console.error('Invalid phone number');
+      // console.error('Invalid phone number');
       // return;
     }
 
@@ -63,7 +63,7 @@ export default function SignUp() {
     if (formData.password.length < 6) {
       // Display error message for password
       errors.password = 'Password must be at least 6 characters long';
-      console.error('Password must be at least 6 characters long');
+      // console.error('Password must be at least 6 characters long');
       // return;
     }
     return errors;
@@ -76,7 +76,7 @@ export default function SignUp() {
 
     try {
       const response = await axios.post('/api/users/signup', formData);
-      console.log(response.data);
+      // console.log(response.data);
       // Optionally, redirect the user to another page after successful sign-up
       router.push('/sign-in')
     } catch (error) {

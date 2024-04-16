@@ -53,7 +53,7 @@ export default function Nav() {
         formData.set('token', token);
         // Example fetch function, replace with your actual fetch logic
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
-        console.log('Profile Data successfully:', response.data);
+        // console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
         setUsername(response.data.username);
       }catch{

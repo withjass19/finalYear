@@ -1,15 +1,7 @@
 'use client'
 import Nav from '@/components/NavBar'
-import Image from 'next/image';
 // import React from 'react'
-import { AiOutlineAppstore } from "react-icons/ai";
-import { RiUser3Line } from "react-icons/ri";
-import { TbMessageCircle2 } from "react-icons/tb";
-import { MdDeleteOutline } from "react-icons/md";
-import { RiEditLine } from "react-icons/ri";
-import {Tooltip, Button} from "@nextui-org/react";
-import { IoEyeOutline } from "react-icons/io5";
-import {React, useRef, useState} from 'react'
+import {React, useState} from 'react'
 import {Input} from "@nextui-org/react";
 import { FiBookOpen } from "react-icons/fi";
 import {useDropzone} from 'react-dropzone';
@@ -64,7 +56,7 @@ export default function Sell() {
         formData.set('selling_price', selling_price);
          // Get the token from local storage
         const token = localStorage.getItem('token');
-        console.log('Token:', localStorage.getItem('token'));
+        // console.log('Token:', localStorage.getItem('token'));
         formData.set('token', token);
     
         try {
@@ -73,7 +65,7 @@ export default function Sell() {
               'Content-Type': 'multipart/form-data'
             }
           });
-          console.log('Upload successful:', response.data);
+          // console.log('Upload successful:', response.data);
           toast.success(response.data.message)
           // window.location.reload() 
         } catch (error) {

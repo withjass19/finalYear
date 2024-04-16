@@ -21,7 +21,7 @@ export default function SignIn() {
   
     const handleChange = (e) => {
       const { name, value } = e.target;
-      console.log(name, value);
+      // console.log(name, value);
       setFormData({ ...formData, [name]: value });
     };
   
@@ -29,7 +29,7 @@ export default function SignIn() {
       e.preventDefault();
       try {
         const response = await axios.post('/api/users/signin', formData);
-        console.log(response.data);
+        // console.log(response.data);
         if(response.data.success){
           localStorage.setItem('user', response.data.id);
           localStorage.setItem('token', response.data.token);

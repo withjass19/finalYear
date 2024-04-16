@@ -51,7 +51,7 @@ export default function Post() {
 
     // Get the token from local storage
     const token = localStorage.getItem('token');
-    console.log('Token:', localStorage.getItem('token'));
+    // console.log('Token:', localStorage.getItem('token'));
     formData.set('token', token);
 
     try {
@@ -60,7 +60,7 @@ export default function Post() {
           'Content-Type': 'multipart/form-data',
         }
       });
-      console.log('Upload successful:', response.data);
+      // console.log('Upload successful:', response.data);
     } catch (error) {
       console.error('Upload failed:', error);
     }

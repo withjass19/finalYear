@@ -13,17 +13,6 @@ export default function ViewAll(props) {
   console.log(props);
   const [books, setBooks] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('/api/books')
-  //   .then(response => {
-  //     // Set fetched data to state
-  //     setBooks(response.data.result);
-  //   })
-  //   .catch(error => {
-  //     console.error('Error fetching data:', error);
-  //   });
-  // }, [])
-
   useEffect(() => {
     // Fetch data when the component mounts
     fetchData();

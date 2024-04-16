@@ -8,8 +8,6 @@ import Image from 'next/image';
 import axios from 'axios';
 
 export default function Book({ params }) {
-  // console.log(params);
-
   const [bookData, setBookData] = useState(null);
   const [user, setUser] = useState();
   const [isAuth, setIsAuth] = useState(false)
@@ -37,14 +35,14 @@ export default function Book({ params }) {
       try {
         const formData = new FormData();
         const token = localStorage.getItem('token');
-        console.log('Token:', localStorage.getItem('token'));
+        // console.log('Token:', localStorage.getItem('token'));
         formData.set('token', token);
         // Send HTTP POST request to your backend API endpoint
         const response = await axios.post('/api/users/userdata', formData);
 
         // Update state with the response data from the backend
 
-        console.log("result",response.data)
+        // console.log("result",response.data)
         setUser(response.data.userinfo);
         setIsAuth(true)
       } catch (error) {

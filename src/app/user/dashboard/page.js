@@ -32,11 +32,11 @@ export default function Deshboard() {
         const formData = new FormData();
   
         const token = localStorage.getItem('token');
-        console.log('Token:', localStorage.getItem('token'));
+        // console.log('Token:', localStorage.getItem('token'));
         formData.set('token', token);
         // Example fetch function, replace with your actual fetch logic
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
-        console.log('Profile Data successfully:', response.data);
+        // console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
         setUser(response.data.username)
       }catch{
@@ -52,10 +52,10 @@ export default function Deshboard() {
         const formData = new FormData();
         // Get the token from local storage
         const token = localStorage.getItem('token');
-        console.log('Token:', localStorage.getItem('token'));
+        // console.log('Token:', localStorage.getItem('token'));
         formData.set('token', token);
         const response = await axios.post('/api/dashbord/postData', formData);
-        console.log('Data sent successfully:', response.data);
+        // console.log('Data sent successfully:', response.data);
         setData(true)
         setpostData(response.data.message)
       } catch (error) {
@@ -72,7 +72,7 @@ export default function Deshboard() {
       const formData = new FormData();
       formData.set('bookid', id);
       const response = await axios.post('/api/books/deletepost', formData);
-      console.log('successfully:', response);
+      // console.log('successfully:', response);
       toast.success(response.data.message)
 
       let reloadFlag = false;
