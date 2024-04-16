@@ -5,7 +5,6 @@ import Nav from '@/components/NavBar'
 import {Divider} from "@nextui-org/react";
 import Filter from '@/components/Filter';
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
-import {Pagination} from "@nextui-org/react";
 import Link from 'next/link';
 import axios from 'axios';
 

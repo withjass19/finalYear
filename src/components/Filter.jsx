@@ -30,7 +30,10 @@ export default function Filter() {
         </div>
       </AccordionItem>
       <AccordionItem key="3" aria-label="Accordion 3" title="Binding">
-        {defaultContent}
+        <div className="flex flex-col ps-5 pb-5">
+          <Checkbox>Papercover</Checkbox>
+          <Checkbox>Hardcover</Checkbox>
+        </div>
       </AccordionItem>
       <AccordionItem key="4" aria-label="Accordion 4" title="Type">
         {defaultContent}
