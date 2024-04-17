@@ -1,6 +1,7 @@
 import {  Book } from "@/database/models/bookschema"
 import mongoose from "mongoose";
 import connectDB from "@/database/config/db";
+import { User } from "@/database/models/userSchema";
 import { NextResponse } from "next/server";
 
 // async function connectDB(){
@@ -21,7 +22,9 @@ export async function POST(req){
     // const id = '65d4961788d80b97480f90e7'
     const data = await Book.findOne({_id: id});
     
+    const user = await User.findOne({_id: data.UId})
+    
     // console.log(data);
     
-    return NextResponse.json({result: data});
+    return NextResponse.json({result: data, user_info: user});
 }

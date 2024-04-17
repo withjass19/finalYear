@@ -35,11 +35,18 @@ export default function BookCard1(props) {
         width={407}
       />
       <CardFooter className="justify-between  bg-black/25 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-        <p className="text-tiny text-white/80">{props.bookName}</p>
+        {/* <p className="text-tiny text-white/80">{props.bookName}</p> */}
+        <p className="text-tiny text-white/80">More Detail</p>
         <Button className="text-tiny text-white bg-black/20" variant="flat" color="default" radius="lg" size="sm">
         &#x20B9;{props.amount}
         </Button>
       </CardFooter>
+      {/* <CardFooter className="justify-center  bg-black/25 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <p className="text-tiny text-white/80">{props.bookName}</p>
+        <Button className="text-white bg-transparent text-sm" variant="flat" color="default" radius="lg" size="sm">
+        &#x20B9;{props.amount}
+        </Button>
+      </CardFooter> */}
     </Card>
   );
 }

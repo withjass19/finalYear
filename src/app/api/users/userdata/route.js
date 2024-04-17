@@ -1,7 +1,6 @@
 import connectDB from "@/database/config/db";
 import { User } from "@/database/models/userSchema";
 import { NextResponse } from "next/server";
-const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
 
 export async function  POST(req, res){

@@ -19,9 +19,13 @@ export default function Book({ params }) {
       try {
         // Send HTTP POST request to your backend API endpoint
         const response = await axios.post('/api/books/find', params);
+        console.log("respons ", response.data.result)
+
+        console.log("user ", response.data.user_info)
 
         // Update state with the response data from the backend
         setBookData(response.data.result);
+        setUser(response.data.user_info.username);
         setIsA(true)
       } catch (error) {
         console.error('Error sending data to backend:', error);
@@ -42,8 +46,8 @@ export default function Book({ params }) {
 
         // Update state with the response data from the backend
 
-        // console.log("result",response.data)
-        setUser(response.data.userinfo);
+        console.log("result",response.data)
+        // setUser(response.data.userinfo);
         setIsAuth(true)
       } catch (error) {
         console.error('Error sending data to backend:', error);
@@ -132,7 +136,7 @@ export default function Book({ params }) {
                     </div>
                     <div className="flex flex-col gap-3 pt-10">
                       <p>Subject: {bookData.subject}</p>
-                      <p>Condition: {bookData.addition}</p>
+                      <p>Condition: {bookData.condition}</p>
                       <p>ISBN: {bookData.ISBN}</p>
                       <p>Type: {bookData.type}</p>
                       <p>Category: {bookData.category}</p>
@@ -229,7 +233,7 @@ export default function Book({ params }) {
                   </div>
                 ) : (
                   <div className='ps-8'>
-                    <p className='text-xl font-semibold'>{user.username}</p>
+                    <p className='text-xl font-semibold'>{user}</p>
                     <p className='text-md font-medium text-gray-400 mb-5'>Users</p>
                     <button className='border-[2px] border-black text-sm font-medium py-1.5 px-8 rounded-lg hover:text-white hover:bg-black'>Contect</button>
                   </div>

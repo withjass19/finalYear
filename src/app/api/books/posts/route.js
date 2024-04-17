@@ -108,7 +108,7 @@ export async function POST(req, res){
 
          await data.save()
         
-        // console.log(data);
+        console.log(data);
     } catch (error) {
         console.error('Error uploading to Cloudinary:', error);
     }
