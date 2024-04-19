@@ -120,6 +120,15 @@ export default function Profile() {
         }
       });
 
+      let reloadFlag = false;
+
+      setTimeout(() => {
+          if (!reloadFlag) {
+              reloadFlag = true;
+              window.location.reload();
+          }
+      }, 250);
+
       // console.log('Image uploaded successfully:', response.data);
     } catch (error) {
       console.error('Error uploading image:', error);

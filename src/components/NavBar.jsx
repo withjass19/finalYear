@@ -53,7 +53,7 @@ export default function Nav() {
         const response = await axios.post('/api/dashbord/profile/profileImage', formData);
         // console.log('Profile Data successfully:', response.data);
         setImageURL(response.data.url);
-        setUsername(response.data.username);
+        setUsername(response.data.userName);
       }catch{
         console.log("error")
         // setImageURL('http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png');
