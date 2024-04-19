@@ -2,6 +2,7 @@ import {  Book } from "@/database/models/bookschema"
 import mongoose from "mongoose";
 import connectDB from "@/database/config/db";
 import { User } from "@/database/models/userSchema";
+import { Upload } from '@/database/models/uploadSchema';
 import { NextResponse } from "next/server";
 
 // async function connectDB(){
@@ -23,8 +24,14 @@ export async function POST(req){
     const data = await Book.findOne({_id: id});
     
     const user = await User.findOne({_id: data.UId})
+
+    const user_Img = await Upload.findOne({ UId: data.UId })
+
+    if(!user_Img){
+      return NextResponse.json({result: data, user_info: user, success: false,  url: 'http://res.cloudinary.com/dci10aqu3/image/upload/v1711052647/user_profile_upload/imjdskinsdsj0zbiebga.png'});
+    }
     
     // console.log(data);
     
-    return NextResponse.json({result: data, user_info: user});
+    return NextResponse.json({result: data, user_info: user, url: user_Img.url});
 }

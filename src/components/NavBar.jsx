@@ -29,9 +29,7 @@ export default function Nav() {
     e.preventDefault();
     const encodedSearchQuery = decodeURIComponent(searchQuery);
     router.push(`/search?q=${encodedSearchQuery}`);
-  };
-
-  
+  };  
 
   useEffect(() => {
     try{

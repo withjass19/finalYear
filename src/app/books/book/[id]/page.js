@@ -10,6 +10,7 @@ import axios from 'axios';
 export default function Book({ params }) {
   const [bookData, setBookData] = useState(null);
   const [user, setUser] = useState();
+  const [userImg, setUserImg] = useState();
   const [isAuth, setIsAuth] = useState(false)
   const [isA, setIsA] = useState(false)
 
@@ -19,13 +20,14 @@ export default function Book({ params }) {
       try {
         // Send HTTP POST request to your backend API endpoint
         const response = await axios.post('/api/books/find', params);
-        console.log("respons ", response.data.result)
+        // console.log("respons ", response.data)
 
-        console.log("user ", response.data.user_info)
+        // console.log("user ", response.data.user_info)
 
         // Update state with the response data from the backend
         setBookData(response.data.result);
         setUser(response.data.user_info.username);
+        setUserImg(response.data.url)
         setIsA(true)
       } catch (error) {
         console.error('Error sending data to backend:', error);
@@ -218,7 +220,7 @@ export default function Book({ params }) {
           <div className='grid grid-cols-12'>
             <div className='col-span-5 p-16'>
               <div className="border-[3px] rounded-lg p-8 flex items-center">
-                <Avatar isBordered radius="full" src="https://i.pravatar.cc/150?u=a04258114e29026708c" className="w-20 h-20 text-large" />
+                <Avatar isBordered radius="full" src={userImg} className="w-20 h-20 text-large" />
                 {!isAuth ? (
                   <div className='ps-8'>
                     <Skeleton>
