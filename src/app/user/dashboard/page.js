@@ -126,7 +126,7 @@ export default function Deshboard() {
 
           <div className='pt-6'>
             <p className='text-3xl font-semibold '>Your uploads</p>
-            <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices lectus sem.</p>
+            {/* <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices lectus sem.</p> */}
           </div>
 
           <div className="bg-red-00">
@@ -177,14 +177,14 @@ export default function Deshboard() {
                                 {books.category}
                             </td>
                             <td class="px-6 py-4">
-                                &#x20B9;{books.price}
+                                &#x20B9;{books.selling_prince}
                             </td>
                             <td className="flex gap-4 items-center px-6 py-4">
-                              <button>
+                              {/* <button>
                                 <IoEyeOutline className="text-gray-400 text-2xl" />
-                              </button>
+                              </button> */}
                               <button>
-                                <RiEditLine className="text-sky-500 text-2xl" />
+                                {/* <RiEditLine className="text-sky-500 text-2xl" /> */}
                               </button>
                               <button onClick={() => handleDeleteItem(books._id)}>
                                 <MdDeleteOutline className="text-red-500 text-2xl"/>

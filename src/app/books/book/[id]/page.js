@@ -237,7 +237,7 @@ export default function Book({ params }) {
                   <div className='ps-8'>
                     <p className='text-xl font-semibold'>{user}</p>
                     <p className='text-md font-medium text-gray-400 mb-5'>Users</p>
-                    <button className='border-[2px] border-black text-sm font-medium py-1.5 px-8 rounded-lg hover:text-white hover:bg-black'>Contect</button>
+                    <button className='border-[2px] border-black text-sm font-medium py-1.5 px-8 rounded-lg hover:text-white hover:bg-black'>Contact</button>
                   </div>
                 )}
                 {/* <div className='ps-8'>

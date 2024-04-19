@@ -57,7 +57,7 @@ export default function ViewAll(props) {
                 </CardBody>
                 <CardFooter className="text-small justify-between">
                   <b>{book.bookName}</b>
-                  <p className="text-default-500">&#x20B9;{book.price}</p>
+                  <p className="text-default-500">&#x20B9;{book.selling_prince}</p>
                 </CardFooter>
               </Link>
             </Card>

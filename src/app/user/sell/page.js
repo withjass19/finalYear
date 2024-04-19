@@ -201,8 +201,8 @@ export default function Sell() {
                     size="md" 
                     variant="bordered" 
                     type="text" 
-                    label="Languag"
-                    placeholder="Languag" 
+                    label="Language"
+                    placeholder="Language" 
                     name='language'
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}

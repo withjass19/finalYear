@@ -22,7 +22,7 @@ export default function FooterData() {
                                 <a href="https://flowbite.com/" className="hover:underline">About Us</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" className="hover:underline">Contect Us</a>
+                                <a href="https://tailwindcss.com/" className="hover:underline">Contact Us</a>
                             </li>
                         </ul>
                     </div>

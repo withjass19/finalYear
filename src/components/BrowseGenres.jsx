@@ -61,7 +61,7 @@ export default function BrowseGenres() {
                         opacity: isInView ? 1 : 0,
                         transition: "all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s"
                     }}
-                >Literatur</div>
+                >Literature</div>
                 <div 
                     className='border-[2px] border-white hover:text-black hover:bg-white rounded-full mx-4 p-1.5'
                     style={{
@@ -89,7 +89,7 @@ export default function BrowseGenres() {
                 >
                     <BookCard1
                         bookName ="Political theory II"
-                        amount= "2"
+                        amount= "205"
                         image = "/assets/images/books/1.jpeg"
                     />
                 </div>
@@ -102,7 +102,7 @@ export default function BrowseGenres() {
                 >
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "201"
                     image = "/assets/images/books/2.jpeg"
                     />
                 </div>
@@ -114,7 +114,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "250"
                     image = "/assets/images/books/3.jpeg"
                     />
                 </div>
@@ -126,7 +126,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "300"
                     image = "/assets/images/books/4.jpeg"
                     />
                 </div>
@@ -138,7 +138,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "325"
                     image = "/assets/images/books/5.jpeg"
                     />
                 </div>
@@ -150,7 +150,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "225"
                     image = "/assets/images/books/6.jpg"
                     />
                 </div>
@@ -162,7 +162,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "257"
                     image = "/assets/images/books/7.jpeg"
                     />
                 </div>
@@ -174,7 +174,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "395"
                     image = "/assets/images/books/8.png"
                     />
                 </div>
@@ -186,7 +186,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "190"
                     image = "/assets/images/books/9.jpeg"
                     />
                 </div>
@@ -198,7 +198,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "234"
                     image = "/assets/images/books/10.jpg"
                     />
                 </div>
@@ -210,7 +210,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "250"
                     image = "/assets/images/books/11.jpeg"
                     />
                 </div>
@@ -222,7 +222,7 @@ export default function BrowseGenres() {
                 }}>
                     <BookCard1
                     bookName ="Action"
-                    amount= "2"
+                    amount= "300"
                     image = "/assets/images/books/12.jpg"
                     />
                 </div>

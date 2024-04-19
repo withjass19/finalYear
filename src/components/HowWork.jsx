@@ -34,7 +34,7 @@ export default function HowWork() {
                   }}
                 >
                     <CardBody className='p-5'>
-                        <p className='font-medium mb-2'>Contect with buyer</p>
+                        <p className='font-medium mb-2'>Contact with buyer</p>
                         <p className='text-sm'>Make beautiful websites regardless of your design experience.</p>
                     </CardBody>
                 </Card>
